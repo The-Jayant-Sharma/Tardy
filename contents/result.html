@@ -1,178 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Exam Result — Tardy</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
-body {
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#ffffff;
-  color:#111111;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding-top:140px;
-  padding-bottom:40px;
-  overflow-y:auto;
-}
+  :root{
+    --bg: #f6f7fb;
+    --glass: rgba(255,255,255,0.65);
+    --card-bg: rgba(255,255,255,0.6);
+    --muted: #666;
+    --accent: #111111;
+    --success: rgba(144,238,144,0.8);
+    --danger: rgba(255,99,71,0.85);
+    --neutral: rgba(200,200,200,0.6);
+  }
 
-.header {
-  padding:20px;
-  text-align:center;
-  font-weight:800;
-  font-size:28px;
-  background:#ffffff;
-  border-bottom:1px solid #e5e5e5;
-  width:100%;
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:10;
-  border-radius:0 0 12px 12px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.05);
-}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#fbfdff 0%, #f3f6fb 100%);color:var(--accent);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
 
-.container {
-  width:90%;
-  max-width:1000px;
-  display:flex;
-  flex-direction:column;
-  gap:30px;
-}
+  /* particle canvas */
+  #particles {
+    position: fixed;
+    inset: 0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+  }
 
-.summary {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  justify-content:space-between;
-}
+  /* content wrapper */
+  .page {
+    position: relative;
+    z-index: 5;
+    width:100%;
+    max-width:1100px;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+  }
 
-.stat-card {
-  flex:1 1 200px;
-  background:#f8f8f8;
-  padding:20px;
-  border-radius:16px;
-  border:1px solid #e0e0e0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-width:200px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.06);
-}
+  .header {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: calc(100% - 48px);
+    max-width:1100px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 8px 30px rgba(12,20,30,0.06);
+    padding: 18px 20px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 20px;
+  }
 
-.stat-card h3 {
-  margin:0 0 10px;
-  font-size:18px;
-  font-weight:700;
-  color:#111111;
-}
+  .container {
+    margin-top: 88px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-bottom: 80px;
+  }
 
-.stat-card p {
-  margin:0;
-  font-size:16px;
-  font-weight:600;
-  color:#111111;
-}
+  /* glass cards layout */
+  .row {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
 
-.charts {
-  display:flex;
-  flex-wrap:wrap;
-  gap:30px;
-  justify-content:center;
-  align-items:flex-start;
-}
+  .glass {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 10px 30px rgba(12,20,30,0.06);
+    backdrop-filter: blur(6px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:110px;
+  }
 
-.chart-box {
-  flex:1 1 300px; /* default width for bar and line */
-  background:#f8f8f8;
-  border-radius:16px;
-  padding:20px;
-  border:1px solid #e0e0e0;
-  box-shadow:0 8px 20px rgba(0,0,0,0.06);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+  .glass h3{margin:0;font-size:14px;font-weight:700;color:var(--muted);letter-spacing:0.4px}
+  .glass p{margin:8px 0 0 0;font-size:20px;font-weight:800;color:var(--accent)}
 
-.chart-box canvas {
-  width:100% !important;
-  height:300px !important;
-}
+  /* Charts area */
+  .charts {
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 18px;
+  }
 
-/* Pie chart narrower */
-#distributionChart {
-  max-width:250px !important;
-  max-height:250px !important;
-}
+  .chart-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.55));
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 10px 30px rgba(12,20,30,0.05);
+  }
 
-.questions {
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
+  .chart-title { font-weight:700;color:var(--muted); margin-bottom:8px; font-size:13px; }
 
-.qitem {
-  background:#f0f0f0;
-  padding:12px;
-  border-radius:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  box-shadow:0 4px 12px rgba(0,0,0,0.05);
-}
+  .charts-grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
 
-.correct { background:rgba(144,238,144,0.4); }
-.incorrect { background:rgba(255,99,71,0.4); }
-.notAttempted { background:rgba(200,200,200,0.3); }
+  .chart-box {
+    padding:10px;
+    background: rgba(255,255,255,0.4);
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:220px;
+  }
 
-.timeSpent {
-  font-size:0.9em;
-  color:#111111;
-  margin-left:8px;
-}
+  .chart-box canvas { width:100% !important; height: 220px !important; }
 
-@media(max-width:700px){
-  .charts { flex-direction:column; gap:20px; }
-  .chart-box { width:100%; max-width:100%; }
-  .summary { flex-direction:column; }
-}
+  /* Question list */
+  .questions {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .qitem {
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px;
+    border-radius:10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.55));
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 6px 18px rgba(12,20,30,0.04);
+  }
+
+  .qitem .left {
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .badge {
+    width:36px;
+    height:36px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    color:white;
+  }
+
+  .correct .badge{ background:linear-gradient(180deg,#7de07d,#4bbf59); }
+  .incorrect .badge{ background:linear-gradient(180deg,#ff9a83,#ff5c3d); }
+  .notAttempted .badge{ background:linear-gradient(180deg,#d2d2d2,#bdbdbd); color:#111; }
+
+  .qmeta { font-size:13px;color:var(--muted); }
+
+  /* responsive */
+  @media (max-width: 900px){
+    .charts { grid-template-columns: 1fr; }
+    .charts-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px){
+    .charts-grid { grid-template-columns: 1fr; }
+    .glass p{ font-size: 18px; }
+    .header{ font-size:18px; padding:14px 16px; }
+    .chart-box canvas{ height: 180px !important; }
+  }
+
+  /* small helper */
+  .muted { color:var(--muted); font-size:13px; }
+  .center { text-align:center; }
+  .legend-row { display:flex; gap:10px; align-items:center; justify-content:center; margin-top:8px; flex-wrap:wrap; }
+  .legend-item { display:flex; gap:8px; align-items:center; font-size:13px; color:var(--muted); }
+  .legend-swatch { width:12px;height:12px;border-radius:3px; }
 </style>
 </head>
 <body>
 
-<div class="header">Exam Result — Tardy</div>
-<div class="container">
+<canvas id="particles"></canvas>
 
-  <!-- Summary Cards -->
-  <div class="summary" id="summaryCards"></div>
+<div class="page">
+  <div class="header">Exam Result — Tardy</div>
 
-  <!-- Charts -->
-  <div class="charts">
-    <div class="chart-box">
-      <canvas id="marksChart"></canvas>
+  <div class="container">
+
+    <!-- summary cards -->
+    <div class="row">
+      <div class="glass" id="card-total"><h3>Total Questions</h3><p id="totalQ">0</p></div>
+      <div class="glass" id="card-correct"><h3>Correct</h3><p id="totalCorrect">0</p></div>
+      <div class="glass" id="card-incorrect"><h3>Incorrect</h3><p id="totalIncorrect">0</p></div>
+      <div class="glass" id="card-notAttempted"><h3>Not Attempted</h3><p id="totalNot">0</p></div>
+      <div class="glass" id="card-score"><h3>Total Score</h3><p id="totalScore">0</p></div>
     </div>
-    <div class="chart-box">
-      <canvas id="timeChart"></canvas>
+
+    <!-- charts area -->
+    <div class="charts">
+      <div class="chart-card">
+        <div class="chart-title">Performance Overview</div>
+
+        <div class="charts-grid">
+          <div class="chart-box">
+            <div class="chart-title">Marks per Question</div>
+            <canvas id="marksChart"></canvas>
+          </div>
+
+          <div class="chart-box">
+            <div class="chart-title">Time Spent per Question</div>
+            <canvas id="timeChart"></canvas>
+          </div>
+        </div>
+
+        <div class="legend-row" style="margin-top:12px;">
+          <div class="legend-item"><span class="legend-swatch" style="background: #111"></span> Marks</div>
+          <div class="legend-item"><span class="legend-swatch" style="background: rgba(0,0,0,0.08)"></span> Time (s)</div>
+        </div>
+      </div>
+
+      <div class="chart-card center">
+        <div class="chart-title">Result Distribution</div>
+        <div class="chart-box" style="min-height:200px;">
+          <canvas id="distributionChart"></canvas>
+        </div>
+        <div class="legend-row">
+          <div class="legend-item"><span class="legend-swatch" style="background: linear-gradient(180deg,#7de07d,#4bbf59)"></span> Correct</div>
+          <div class="legend-item"><span class="legend-swatch" style="background: linear-gradient(180deg,#ff9a83,#ff5c3d)"></span> Incorrect</div>
+          <div class="legend-item"><span class="legend-swatch" style="background: linear-gradient(180deg,#d2d2d2,#bdbdbd)"></span> Not Attempted</div>
+        </div>
+      </div>
     </div>
-    <div class="chart-box">
-      <canvas id="distributionChart"></canvas>
+
+    <!-- question list -->
+    <div>
+      <h3 style="margin:0 0 8px 0; font-weight:700; color:var(--muted)">Questions</h3>
+      <div class="questions" id="qlist"></div>
     </div>
+
   </div>
-
-  <!-- Question List -->
-  <div class="questions" id="qlist"></div>
 </div>
 
 <script>
+/* ---------------------------
+   Reactive particle system
+   --------------------------- */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+let W = canvas.width = window.innerWidth;
+let H = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', ()=>{ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
+
+const PT_COUNT = Math.max(60, Math.floor((W*H)/90000)); // scale by screen size
+const pts = [];
+const mouse = { x: -9999, y: -9999, down:false };
+
+for(let i=0;i<PT_COUNT;i++){
+  pts.push({
+    x: Math.random()*W,
+    y: Math.random()*H,
+    r: Math.random()*2.6 + 0.8,
+    vx: (Math.random()-0.5)*0.25,
+    vy: (Math.random()-0.5)*0.25,
+    baseOpacity: Math.random()*0.35 + 0.08,
+    opacity: 0
+  });
+}
+
+function updateParticles(){
+  for(const p of pts){
+    // move
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // wrap
+    if(p.x < -10) p.x = W + 10;
+    if(p.x > W + 10) p.x = -10;
+    if(p.y < -10) p.y = H + 10;
+    if(p.y > H + 10) p.y = -10;
+
+    // reactive: repel slightly from mouse
+    const dx = p.x - mouse.x;
+    const dy = p.y - mouse.y;
+    const dist2 = dx*dx + dy*dy;
+    const minDist = 90*90;
+    if(dist2 < minDist){
+      // push away with strength depending on distance
+      const dist = Math.sqrt(dist2) || 1;
+      const strength = (90 - dist)/90 * 0.9;
+      p.vx += (dx/dist) * strength * 0.08;
+      p.vy += (dy/dist) * strength * 0.08;
+    }
+
+    // friction so velocities don't explode
+    p.vx *= 0.995;
+    p.vy *= 0.995;
+
+    // slowly approach base opacity
+    p.opacity += (p.baseOpacity - p.opacity) * 0.04;
+  }
+}
+
+function drawParticles(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(0,0,0,${p.opacity})`;
+    ctx.shadowBlur = 6;
+    ctx.shadowColor = 'rgba(0,0,0,0.12)';
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function loop(){
+  updateParticles();
+  drawParticles();
+  requestAnimationFrame(loop);
+}
+loop();
+
+window.addEventListener('mousemove', (e)=>{
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+window.addEventListener('touchmove', (e)=>{
+  if(e.touches && e.touches[0]) {
+    mouse.x = e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
+  }
+});
+
+/* ---------------------------
+   Data fetching & rendering
+   (preserve original logic)
+   --------------------------- */
 const SHEETDB_ENDPOINT="https://sheetdb.io/api/v1/o183fvrgl6r69";
 const username = localStorage.getItem('displayName') || 'Guest';
-const suffix = sessionStorage.getItem('lastRandomSuffix');
+const suffix = sessionStorage.getItem('lastRandomSuffix') || '';
 const uniqueName = username + suffix;
 
 async function fetchResult(){
@@ -181,9 +363,10 @@ async function fetchResult(){
         if(!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         if(!data.length) throw new Error('No data');
+        // parse the latest returned
         const resultJson = JSON.parse(data[data.length-1].json);
         fetchTestConfig(resultJson);
-    }catch(e){console.error(e); alert('Failed to fetch result');}
+    }catch(e){ console.error(e); alert('Failed to fetch result'); }
 }
 
 async function fetchTestConfig(result){
@@ -193,16 +376,16 @@ async function fetchTestConfig(result){
         if(!res.ok) throw new Error('Failed to fetch test config');
         const testData = await res.json();
 
-        const weight = testData.marks.full || 1;
-        const negative = testData.marks.negative || 0;
-        const nullMark = testData.marks.null || 0;
+        const weight = (testData.marks && testData.marks.full) || 1;
+        const negative = (testData.marks && testData.marks.negative) || 0;
+        const nullMark = (testData.marks && testData.marks.null) || 0;
 
         renderResult(result, weight, negative, nullMark);
-    }catch(e){console.error(e); alert('Failed to fetch test configuration');}
+    }catch(e){ console.error(e); alert('Failed to fetch test configuration'); }
 }
 
 function renderResult(result, weight, negative, nullMark){
-    // Summary Cards
+    // Summary
     const totalCorrect = result.questions.filter(q=>q.status==='correct').length;
     const totalIncorrect = result.questions.filter(q=>q.status==='incorrect').length;
     const totalNotAttempted = result.questions.filter(q=>q.status==='notAttempted').length;
@@ -212,59 +395,137 @@ function renderResult(result, weight, negative, nullMark){
         return sum+nullMark;
     },0);
 
-    const summaryCards = document.getElementById('summaryCards');
-    summaryCards.innerHTML = `
-      <div class="stat-card"><h3>Total Questions</h3><p>${result.questions.length}</p></div>
-      <div class="stat-card"><h3>Correct</h3><p>${totalCorrect}</p></div>
-      <div class="stat-card"><h3>Incorrect</h3><p>${totalIncorrect}</p></div>
-      <div class="stat-card"><h3>Not Attempted</h3><p>${totalNotAttempted}</p></div>
-      <div class="stat-card"><h3>Total Score</h3><p>${totalScore}</p></div>
-    `;
+    document.getElementById('totalQ').textContent = result.questions.length;
+    document.getElementById('totalCorrect').textContent = totalCorrect;
+    document.getElementById('totalIncorrect').textContent = totalIncorrect;
+    document.getElementById('totalNot').textContent = totalNotAttempted;
+    document.getElementById('totalScore').textContent = totalScore;
 
-    // Question List
+    // question list
     const qlist = document.getElementById('qlist');
     qlist.innerHTML = '';
-    result.questions.forEach((q,idx)=>{
-        const div = document.createElement('div');
-        div.className='qitem ' + (q.status==='correct'?'correct':(q.status==='incorrect'?'incorrect':'notAttempted'));
-        let marksObtained = 0;
-        if(q.status==='correct') marksObtained = weight;
-        else if(q.status==='incorrect') marksObtained = negative;
-        else if(q.status==='notAttempted') marksObtained = nullMark;
-
-        div.innerHTML = `<span>Question ${idx+1}: ${q.status}</span><span class='timeSpent'>Time spent: ${q.timeSpent}s | Marks: ${marksObtained}</span>`;
-        qlist.appendChild(div);
+    result.questions.forEach((q, idx)=>{
+      const div = document.createElement('div');
+      div.className = 'qitem ' + (q.status==='correct' ? 'correct' : (q.status==='incorrect' ? 'incorrect' : 'notAttempted'));
+      div.innerHTML = `
+         <div class="left">
+           <div class="badge">${idx+1}</div>
+           <div>
+             <div style="font-weight:700">Question ${idx+1}</div>
+             <div class="qmeta">${q.status === 'correct' ? 'Correct' : (q.status === 'incorrect' ? 'Incorrect' : 'Not Attempted')}</div>
+           </div>
+         </div>
+         <div style="display:flex;align-items:center;gap:12px">
+           <div class="qmeta">Time: <strong>${q.timeSpent}s</strong></div>
+           <div class="qmeta">Marks: <strong>${ q.status==='correct' ? weight : (q.status==='incorrect' ? negative : nullMark) }</strong></div>
+         </div>
+      `;
+      qlist.appendChild(div);
     });
 
-    // Charts
+    // charts data
     const labels = result.questions.map((_,i)=>`Q${i+1}`);
     const marksData = result.questions.map(q=>{
-        if(q.status==='correct') return weight;
-        if(q.status==='incorrect') return negative;
-        return nullMark;
+      if(q.status==='correct') return weight;
+      if(q.status==='incorrect') return negative;
+      return nullMark;
     });
     const timeData = result.questions.map(q=>q.timeSpent);
     const distData = [totalCorrect, totalIncorrect, totalNotAttempted];
 
-    new Chart(document.getElementById('marksChart'),{
-        type:'bar',
-        data:{ labels, datasets:[{ label:'Marks per Question', data:marksData, backgroundColor:'#111111', borderRadius:8 }]},
-        options:{ responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}}
+    // create gradient for marks chart
+    const marksCtx = document.getElementById('marksChart').getContext('2d');
+    const g1 = marksCtx.createLinearGradient(0,0,0,300);
+    g1.addColorStop(0, 'rgba(17,17,17,0.85)');
+    g1.addColorStop(1, 'rgba(17,17,17,0.25)');
+
+    const marksChart = new Chart(marksCtx, {
+      type:'bar',
+      data:{
+        labels,
+        datasets:[{
+          label:'Marks',
+          data:marksData,
+          backgroundColor: g1,
+          borderRadius: 8,
+          maxBarThickness: 36
+        }]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label: (ctx)=> ` ${ctx.parsed.y}` } } },
+        scales:{
+          x:{ grid:{ display:false }, ticks:{ maxRotation:0 } },
+          y:{ beginAtZero:true, grid:{ color:'rgba(10,10,10,0.04)' } }
+        }
+      }
     });
 
-    new Chart(document.getElementById('timeChart'),{
-        type:'line',
-        data:{ labels, datasets:[{ label:'Time Spent (s)', data:timeData, borderColor:'#111111', backgroundColor:'rgba(0,0,0,0.05)', fill:true, tension:0.3, pointRadius:5 }]},
-        options:{ responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}}
+    // time chart with gradient fill
+    const timeCtx = document.getElementById('timeChart').getContext('2d');
+    const g2 = timeCtx.createLinearGradient(0,0,0,300);
+    g2.addColorStop(0, 'rgba(17,17,17,0.18)');
+    g2.addColorStop(1, 'rgba(17,17,17,0.02)');
+
+    const timeChart = new Chart(timeCtx, {
+      type:'line',
+      data:{
+        labels,
+        datasets:[{
+          label:'Time (s)',
+          data: timeData,
+          borderColor: '#111',
+          backgroundColor: g2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointBackgroundColor: '#111'
+        }]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{ legend:{ display:false } },
+        scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true, grid:{ color:'rgba(10,10,10,0.04)' } } }
+      }
     });
 
-    new Chart(document.getElementById('distributionChart'),{
-        type:'doughnut',
-        data:{ labels:['Correct','Incorrect','Not Attempted'], datasets:[{ data:distData, backgroundColor:['rgba(144,238,144,0.6)','rgba(255,99,71,0.6)','rgba(200,200,200,0.5)'], borderWidth:1 }]},
-        options:{ responsive:true, plugins:{legend:{position:'bottom'}} }
+    // doughnut distribution with nice gradients
+    const distCtx = document.getElementById('distributionChart').getContext('2d');
+
+    const distChart = new Chart(distCtx, {
+      type:'doughnut',
+      data:{
+        labels:['Correct','Incorrect','Not Attempted'],
+        datasets:[{
+          data: distData,
+          backgroundColor: [
+            'rgba(123, 212, 119, 0.95)',
+            'rgba(255,99,71,0.95)',
+            'rgba(200,200,200,0.85)'
+          ],
+          hoverOffset: 8
+        }]
+      },
+      options:{
+        responsive:true,
+        maintainAspectRatio:false,
+        plugins:{ legend:{ position: 'bottom' } }
+      }
     });
+
+    // subtle animation: pulse the score card
+    const scoreCard = document.getElementById('card-score');
+    scoreCard.animate([
+      { transform: 'scale(1)', boxShadow: '0 10px 30px rgba(12,20,30,0.06)' },
+      { transform: 'scale(1.02)', boxShadow: '0 16px 40px rgba(12,20,30,0.08)' },
+      { transform: 'scale(1)', boxShadow: '0 10px 30px rgba(12,20,30,0.06)' }
+    ], { duration: 800, easing:'ease-in-out' });
+
 }
 
+/* initialize */
 fetchResult();
 </script>
 </body>
