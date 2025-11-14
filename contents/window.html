@@ -184,28 +184,29 @@
       text-align:center;
     }
 
-    .qpanel {
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-      margin-top:25px;
-    }
+   /* QUESTION GRID → 5 per row always */
+.qpanel {
+  display: grid;
+  grid-template-columns: repeat(5, 48px); /* EXACT: 5 boxes per row */
+  justify-content: center;
+  gap: 12px;
+  margin-top: 25px;
+}
 
-    .qbox-item {
-      width:48px;
-      height:48px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:8px;
-      background:#e0e0e0;
-      cursor:pointer;
-      font-weight:600;
-      transition:0.2s;
-      color:#111111;
-    }
-
+.qbox-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #e0e0e0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  color: #111111;
+}
+   
     .qbox-item.answered {
       background:var(--green-light);
       color:white;
