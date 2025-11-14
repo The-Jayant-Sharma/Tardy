@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Window — Tardy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-light: rgba(144,238,144,0.4);
+  --green-dark: rgba(0,200,0,0.6);
+}
+* { box-sizing: border-box; }
+
+body {
+  margin:0; 
+  font-family:'Poppins',sans-serif; 
+  background:#ffffff; /* neat white background */
+  color:#111111; /* main text black */
+  overflow-y:auto; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  padding-top:160px;
+}
+
+.header {
+  padding:20px 20px; 
+  text-align:center; 
+  font-weight:800; 
+  font-size:28px; 
+  background:#ffffff; 
+  border-bottom:1px solid #e5e5e5;
+  width:100%; 
+  position:fixed; 
+  top:0; 
+  left:0; 
+  z-index:10;
+  border-radius:0 0 12px 12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  color:#111111;
+}
+
+.container {
+  width:90%; 
+  max-width:800px; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  gap:30px;
+}
+
+.qbox {
+  width:78vw; 
+  max-width:720px; 
+  height:75vh; 
+  overflow:auto;
+  background:#f8f8f8; /* subtle light-gray card */
+  padding:24px; 
+  border-radius:16px;
+  border:1px solid #e0e0e0; 
+  box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  display:flex; 
+  flex-direction:column;
+}
+
+.qnum { 
+  font-weight:700; 
+  margin-bottom:20px; 
+  font-size:22px; 
+  color:#111111;
+}
+
+.question { 
+  font-size:18px; 
+  min-height:140px; 
+  overflow:auto; 
+  white-space:pre-wrap; 
+  word-wrap:break-word;
+  color:#111111;
+}
+
+.options { 
+  display:flex; 
+  flex-direction:column; 
+  margin-top:20px; 
+  gap:16px; 
+  overflow:auto; 
+  max-height:40%; 
+}
+
+.opt { 
+  padding:16px 18px; 
+  border-radius:12px; 
+  border:1px solid #d0d0d0;
+  background:#ffffff; 
+  cursor:pointer; 
+  transition:0.2s; 
+  display:flex; 
+  align-items:center; 
+  gap:12px; 
+  word-break:break-word; 
+  color:#111111;
+}
+
+.opt:hover { 
+  transform:translateY(-2px); 
+  box-shadow:0 6px 22px rgba(0,0,0,0.12); 
+}
+
+.opt.selected { 
+  background:var(--green-light); 
+  border-color:rgba(0,150,0,0.3); 
+}
+
+.opt.marked { 
+  background:var(--green-dark); 
+  border-color:rgba(0,120,0,0.4); 
+  cursor:not-allowed; 
+}
+
+.nav { 
+  display:flex; 
+  justify-content:space-between; 
+  margin-top:25px; 
+  gap:12px; 
+  flex-wrap:wrap; 
+}
+
+.btn { 
+  padding:16px 20px; 
+  border-radius:14px; 
+  border:none; 
+  background:#111111; 
+  color:#ffffff; 
+  font-weight:700; 
+  cursor:pointer; 
+  transition:0.2s; 
+}
+
+.btn:hover { 
+  transform:translateY(-2px); 
+  box-shadow:0 6px 22px rgba(0,0,0,0.12); 
+}
+
+.btn:disabled { 
+  opacity:0.5; 
+  cursor:not-allowed; 
+}
+
+.progress { 
+  margin-top:18px; 
+  font-size:14px; 
+  opacity:0.9; 
+  text-align:center; 
+}
+
+.qpanel { 
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:12px; 
+  justify-content:center; 
+  margin-top:25px; 
+}
+
+.qbox-item { 
+  width:48px; 
+  height:48px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  border-radius:8px;
+  background:#e0e0e0; 
+  cursor:pointer; 
+  font-weight:600; 
+  transition:0.2s; 
+  color:#111111;
+}
+
+.qbox-item.answered { 
+  background:var(--green-light); 
+  color:white; 
+}
+
+.qbox-item.marked { 
+  background:var(--green-dark); 
+  color:white; 
+  cursor:not-allowed; 
+}
+
+#submitBtn { 
+  margin-top:30px; 
+  background:#111111; 
+  color:white; 
+  width:280px; 
+  padding:18px; 
+  border-radius:16px; 
+  font-weight:700; 
+  border:none; 
+  font-size:18px; 
+  transition:0.2s; 
+}
+
+#submitBtn:hover { 
+  transform:translateY(-2px); 
+  box-shadow:0 8px 28px rgba(0,0,0,0.12); 
+}
+
+#timerBox { 
+  width:220px; 
+  text-align:center; 
+  padding:12px 0; 
+  background:#f0f0f0; 
+  border-bottom:1px solid #d0d0d0; 
+  color:#111111; 
+  font-weight:700; 
+  border-radius:6px; 
+  font-size:20px; 
+  margin-top:20px; 
+}
+
+canvas { 
+  position:fixed; 
+  top:0; 
+  left:0; 
+  z-index:-1; 
+}
+
+@media(max-width:600px){
+  .qbox{padding:22px; height:70vh;}
+  .btn{padding:14px 16px; font-size:14px;}
+  .nav{flex-direction:column; gap:12px;}
+  .question{font-size:16px; min-height:120px;}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/kjellmf/tikzjax/tikzjax.js"></script>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div class="header">Tardy — Exam Window</div>
+<div class="container">
+  <div class="qbox" id="qbox">
+    <div class="qnum" id="qnum">Question 1</div>
+    <div class="question" id="question">Loading...</div>
+    <div class="options" id="options"></div>
+    <div class="nav">
+      <button class="btn" id="prevBtn">Previous</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="markBtn">Mark</button>
+        <button class="btn" id="nextBtn">Next</button>
+      </div>
+    </div>
+    <div class="progress" id="progress">0 / 0</div>
+  </div>
+  <div class="qpanel" id="qpanel"></div>
+  <div id="timerBox"></div>
+  <button class="btn" id="submitBtn">Submit Exam</button>
+</div>
+<script>
+// === All your original JS code from the file you sent ===
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+let particles=[];
+for(let i=0;i<80;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,dx:(Math.random()-0.5)*0.1,dy:(Math.random()-0.5)*0.1});}
+function drawParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='rgba(0,0,0,0.01)';particles.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;});requestAnimationFrame(drawParticles);}
+drawParticles();window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+
+const sessionId = localStorage.getItem('selectedSession');
+const displayName = localStorage.getItem('displayName')||'Guest';
+let questions=[],current=0,responses=[],examDuration=3600,startTime=Date.now(),perQuestionStart=Date.now(),timerInterval;
+const SHEETDB_ENDPOINT="https://sheetdb.io/api/v1/o183fvrgl6r69";
+
+function generateRandomString(length){let s='';const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';for(let i=0;i<length;i++){s+=chars.charAt(Math.floor(Math.random()*chars.length));}return s;}
+
+async function init(){
+  try{
+    const res = await fetch(`JSON/tests/${sessionId}.json`);
+    if(!res.ok)throw new Error('File not found');
+    const data = await res.json();
+    questions = data.questions;
+    examDuration = data.duration||3600;
+    responses = questions.map(q=>({selected:null,timeSpent:0,marked:false}));
+    renderQuestion(0);
+    buildQPanel();
+    startTimer(examDuration);
+  }catch(e){alert('Failed to load questions.'); console.error(e);}
+}
+
+function renderQuestion(i){
+  if(i<0||i>=questions.length)return;
+  const now=Date.now();
+  if(responses[current])responses[current].timeSpent+=Math.floor((now-perQuestionStart)/1000);
+  current=i; perQuestionStart=Date.now();
+  const q=questions[i];
+  document.getElementById('qnum').textContent=`Question ${i+1} / ${questions.length}`;
+  const questionEl=document.getElementById('question'); questionEl.innerHTML=q.question;
+  const opts=document.getElementById('options'); opts.innerHTML='';
+  q.options.forEach((opt,idx)=>{
+    const div=document.createElement('div'); div.className='opt';
+    if(responses[i].selected===idx)div.classList.add(responses[i].marked?'marked':'selected');
+    div.innerHTML=`<div style="flex:1">${opt}</div>`;
+    div.addEventListener('click',()=>{if(responses[i].marked)return; responses[i].selected=idx; Array.from(opts.children).forEach(c=>c.classList.remove('selected','marked')); div.classList.add('selected'); buildQPanel();});
+    opts.appendChild(div);
+  });
+  document.getElementById('markBtn').style.display = responses[i].marked ? 'none':'inline-block';
+  if(window.MathJax)MathJax.typesetPromise([questionEl,opts]).catch(()=>{});
+  if(window.TikzJax)TikzJax.typeset([questionEl]);
+  updateNavButtons();
+}
+
+function buildQPanel(){
+  const panel=document.getElementById('qpanel'); panel.innerHTML='';
+  questions.forEach((q,idx)=>{
+    const b=document.createElement('div'); b.className='qbox-item'; b.textContent=idx+1;
+    if(responses[idx].marked)b.classList.add('marked');
+    else if(responses[idx].selected!==null)b.classList.add('answered');
+    b.addEventListener('click',()=>{renderQuestion(idx);});
+    panel.appendChild(b);
+  });
+}
+
+function startTimer(seconds){
+  const timerEl=document.getElementById('timerBox');
+  let end=Date.now()+seconds*1000;
+  timerInterval=setInterval(()=>{
+    const rem=Math.max(0,Math.floor((end-Date.now())/1000));
+    const h=Math.floor(rem/3600), m=Math.floor((rem%3600)/60), s=rem%60;
+    timerEl.textContent=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(rem<=0){clearInterval(timerInterval); submitExam();}
+  },500);
+}
+
+function updateNavButtons(){
+  document.getElementById('prevBtn').style.display=current===0?'none':'inline-block';
+  document.getElementById('nextBtn').style.display=current===questions.length-1?'none':'inline-block';
+}
+
+document.getElementById('prevBtn').addEventListener('click',()=>{if(current>0)renderQuestion(current-1);});
+document.getElementById('nextBtn').addEventListener('click',()=>{if(current<questions.length-1)renderQuestion(current+1);});
+document.getElementById('markBtn').addEventListener('click',()=>{
+  if(responses[current].selected===null)return;
+  responses[current].marked=true;
+  const opts=document.getElementById('options');
+  Array.from(opts.children).forEach((c,i)=>{if(responses[current].selected===i){c.classList.remove('selected'); c.classList.add('marked');}});
+  document.getElementById('markBtn').style.display='none';
+  buildQPanel();
+});
+document.getElementById('submitBtn').addEventListener('click',submitExam);
+
+async function submitExam(){
+  clearInterval(timerInterval);
+  const now=Date.now();
+  if(responses[current]) responses[current].timeSpent+=Math.floor((now-perQuestionStart)/1000);
+  const randomSuffix = generateRandomString(10);
+  const sessionDisplayName = displayName + randomSuffix;
+  sessionStorage.setItem('lastRandomSuffix', randomSuffix);
+  const result={
+    session: sessionId,
+    displayName: sessionDisplayName,
+    totalQuestions: questions.length,
+    correct:0,
+    incorrect:0,
+    notAttempted:0,
+    questions:[],
+  };
+  questions.forEach((q,idx)=>{
+    const sel=responses[idx].selected;
+    let status='notAttempted';
+    if(responses[idx].marked){
+      if(sel===q.answer){ status='correct'; result.correct++; }
+      else { status='incorrect'; result.incorrect++; }
+    } else { result.notAttempted++; status='notAttempted'; }
+    result.questions.push({ id:q.id, selected:sel, correctAnswer:q.answer, status, timeSpent:responses[idx].timeSpent });
+  });
+  try{
+    await fetch(SHEETDB_ENDPOINT,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify([{ 'display-name': sessionDisplayName,'unique-identifier': sessionId, json: JSON.stringify(result) }]) });
+  }catch(e){console.warn('Failed to post result',e);}
+  alert('Exam submitted');
+  window.location.href='result.html';
+}
+
+init();
+</script>
+</body>
+</html>
