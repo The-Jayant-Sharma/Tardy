@@ -1,7 +1,7 @@
 {
   "id": "sample-isi-bmath-01",
   "title": "Sample ISI B.Math Practice Test",
-  "duration": 3600,
+  "duration": 5400,
   "total_questions": 5,
   "marks": {
     "full": 4,
@@ -12,6 +12,7 @@
     {
       "id": "q1",
       "question": "$$\\text{Let } f(x)=x^3-3x+1.\\text{ How many real roots does } f(x)=0?$$",
+      "image": "JSON/tests/images/1026688382870503454.png",
       "options": ["$$0$$", "$$1$$", "$$2$$", "$$3$$"],
       "answer": 1
     },
