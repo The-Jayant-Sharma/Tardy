@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Page - Tardy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #ffffff; /* neat white background */
+      color: #111111; /* primary text black */
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: #ffffff; 
+      border-bottom: 1px solid #e5e5e5;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-radius: 0 0 12px 12px;
+      animation: dropFade 1.2s ease-out;
+      color: #111111;
+    }
+
+    @keyframes dropFade {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subheading {
+      margin-top: 35px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: #111111;
+      animation: fadeIn 1.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .sessions-container {
+      margin: 40px auto;
+      width: 85%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      animation: fadeIn 1.6s ease-out;
+    }
+
+    .session-card {
+      position: relative;
+      background: #f8f8f8; /* subtle white-gray card */
+      border-radius: 16px;
+      padding: 20px 25px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .session-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .session-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111111;
+    }
+
+    .session-info {
+      font-size: 15px;
+      opacity: 0.8;
+      color: #333333;
+    }
+
+    .description-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(17,17,17,0.85); /* dark overlay on hover */
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .session-card:hover .description-box {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* If you had buttons, same theme: soft curved, subtle shadows */
+    
+    button {
+      border-radius: 12px;
+      border: none;
+      background-color: #111111;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #333333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Tardy</div>
+
+  <div id="greet" class="subheading" style="margin-top:20px; font-size:22px; font-weight:500;"></div>
+
+  <div class="subheading">Active Sessions</div>
+
+  <div class="sessions-container" id="sessions"></div>
+
+  <script>
+    async function loadSessions() {
+      try {
+        const res = await fetch("JSON/sessions.json");
+        const data = await res.json();
+
+        const container = document.getElementById("sessions");
+        container.innerHTML = "";
+
+        data.sessions.forEach(s => {
+          const card = document.createElement("div");
+          card.className = "session-card";
+          card.dataset.sessionId = s.id;
+
+          card.innerHTML = `
+            <div class="session-title">${s.title}</div>
+            <div class="session-info">ID: ${s.id}</div>
+            <div class="session-info">Time Limit: ${s.time}</div>
+            <div class="session-info">Questions: ${s.total_questions}</div>
+            <div class="session-info">Starts: ${s.start}</div>
+            <div class="session-info">Ends: ${s.end}</div>
+            <div class="description-box">${s.description}</div>
+          `;
+
+          // clicking a session sends user to exam window
+          card.addEventListener("click", () => {
+            const sessionId = s.id;
+            localStorage.setItem("selectedSession", sessionId);
+            window.location.href = "window.html";
+          });
+
+          container.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error("Error loading sessions.json:", err);
+      }
+    }
+
+    loadSessions();
+
+    function loadName() {
+      const name = localStorage.getItem("displayName") || "Guest";
+      document.getElementById("greet").textContent = `Greetings ${name}`;
+    }
+
+    loadName();
+  </script>
+
+</body>
+</html>
