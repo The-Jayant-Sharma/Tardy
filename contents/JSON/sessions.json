@@ -1,0 +1,30 @@
+{
+  "sessions": [
+    {
+      "id": "sample-isi-bmath-01",
+      "title": "Mock Test — Algebra I",
+      "description": "A beautiful algebra warm-up covering equations, inequalities, functional intuition, and clever transformations.",
+      "time": "60 minutes",
+      "total_questions": 30,
+      "start": "2025-11-15T10:00:00",
+      "end": "2025-11-15T11:00:00"
+    },
+    {
+      "id": "mock-2025-geometry-02",
+      "title": "Geometry Mastery Challenge",
+      "description": "Deep geometry with circles, coordinate transforms, and elegant construction-style reasoning.",
+      "time": "90 minutes",
+      "total_questions": 25,
+      "start": "2025-11-17T09:00:00",
+      "end": "2025-11-17T10:30:00"
+    },
+    {
+      "id": "mock-2025-combinatorics-03",
+      "title": "Combinatorics Intensive",
+      "description": "A playful combinatorial test touching permutations, bijections, double counting, and small invariants.",
+      "time": "75 minutes",
+      "total_questions": 20,
+      "start": "2025-11-20T16:00:00",
+      "end": "2025-11-20T17:15:00"
+    }
+  ]
