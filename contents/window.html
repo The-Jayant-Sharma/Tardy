@@ -79,14 +79,14 @@
     }
 
     .question {
-      font-size:18px;
-      min-height:140px;
-      overflow-x:hidden;
-      overflow-y:visible;
-      white-space:pre-wrap;
-      word-wrap:break-word;
-      color:#111111;
-    }
+  font-size: 18px;
+  min-height: 140px;
+  overflow-x: auto;    /* allow horizontal scroll */
+  overflow-y: auto;
+  white-space: nowrap; /* prevent wrapping so horizontal scroll works */
+  word-wrap: normal;
+  color: #111111;
+}
 
     /* IMAGE HOLDER */
     #qimage-holder {
