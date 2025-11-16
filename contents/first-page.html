@@ -218,54 +218,74 @@
         LOAD SESSIONS
      ========================= */
   async function loadSessions() {
-    try {
-      const res = await fetch("JSON/sessions.json");
-      const data = await res.json();
+  try {
+    const res = await fetch("JSON/sessions.json");
+    const data = await res.json();
 
-      const container = document.getElementById("sessions");
-      container.innerHTML = "";
+    const container = document.getElementById("sessions");
+    container.innerHTML = "";
 
-      data.sessions.forEach(s => {
-        const card = document.createElement("div");
-        card.className = "session-card";
+    // Get today's date in DD-MM-YYYY format
+    const today = new Date();
+    const todayStr = today.toLocaleDateString("en-GB").split("/").join("-"); 
+    // en-GB → gives DD/MM/YYYY, then convert to DD-MM-YYYY
 
-        card.innerHTML = `
-          <div class="session-title">${s.title}</div>
-          <div class="session-info">ID: ${s.id}</div>
-          <div class="session-info">Time Limit: ${s.time}</div>
-          <div class="session-info">Questions: ${s.total_questions}</div>
-          <div class="session-info">Starts: ${s.start}</div>
-          <div class="session-info">Ends: ${s.end}</div>
+    data.sessions.forEach(s => {
+      const start = s["start-date"];
+      const end = s["end-date"];
 
-          <div class="description-box">
-            ${s.description}
-            <button class="take-test-btn">Take Test</button>
-          </div>
-        `;
+      // If date fields exist, then apply filtering
+      if (start && end) {
+        // Compare string dates by converting to real Date objects
+        const startDate = new Date(start.split("-").reverse().join("-"));
+        const endDate = new Date(end.split("-").reverse().join("-"));
+        const todayDate = new Date(todayStr.split("-").reverse().join("-"));
 
-        const desc = card.querySelector(".description-box");
-        const btn = card.querySelector(".take-test-btn");
+        // Skip (do NOT show) if today is outside interval
+        if (todayDate < startDate || todayDate > endDate) {
+          return; // skip this session
+        }
+      }
 
-        // Card click -> toggle dropdown
-        card.addEventListener("click", (e) => {
-          if (e.target.closest(".take-test-btn")) return;
-          desc.classList.toggle("open");
-        });
+      // ---------- Render the session ----------
+      const card = document.createElement("div");
+      card.className = "session-card";
 
-        // Take Test button
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          localStorage.setItem("selectedSession", s.id);
-          window.location.href = "window.html";
-        });
+      card.innerHTML = `
+        <div class="session-title">${s.title}</div>
+        <div class="session-info">ID: ${s.id}</div>
+        <div class="session-info">Time Limit: ${s.time}</div>
+        <div class="session-info">Questions: ${s.total_questions}</div>
+        <div class="session-info">Starts: ${s.start}</div>
+        <div class="session-info">Ends: ${s.end}</div>
 
-        container.appendChild(card);
+        <div class="description-box">
+          ${s.description}
+          <button class="take-test-btn">Take Test</button>
+        </div>
+      `;
+
+      const desc = card.querySelector(".description-box");
+      const btn = card.querySelector(".take-test-btn");
+
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".take-test-btn")) return;
+        desc.classList.toggle("open");
       });
 
-    } catch (err) {
-      console.error("Error loading sessions.json:", err);
-    }
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        localStorage.setItem("selectedSession", s.id);
+        window.location.href = "window.html";
+      });
+
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error("Error loading sessions.json:", err);
   }
+}
 
   loadSessions();
 
