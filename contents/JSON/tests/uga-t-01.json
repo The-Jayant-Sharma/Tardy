@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "q1",
-      "question": "$$\\text{A worker suffers a }20\\%\\text{ cut in wages.} <br> \\text{He regains his original pay by obtaining a rise of:}$$",
+      "question": "$$\\text{A worker suffers a }20\\%\\text{ cut in wages.} \\text{He regains his original pay by obtaining a rise of:}$$",
       "options": ["$$20\\%$$", "$$22\\tfrac{1}{2}\\%$$", "$$25\\%$$", "$$27\\tfrac{1}{9}\\%$$"],
       "answer": 2
     },
