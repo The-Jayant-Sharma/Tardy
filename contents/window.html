@@ -561,12 +561,17 @@ async function submitExam(){
         "json":JSON.stringify(result)
       }])
     });
-  }catch(e){
+}catch(e){
     console.warn("Failed to upload results",e);
-  }
+}
 
-  alert("Exam submitted.");
-  location.href="result.html";
+/* ================================
+   NEW: Save to Local Storage
+   ================================ */
+localStorage.setItem("last_exam_submission", JSON.stringify(result));
+
+alert("Exam submitted.");
+location.href="result.html";
 }
 
 init();
