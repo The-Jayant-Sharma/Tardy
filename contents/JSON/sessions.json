@@ -6,26 +6,21 @@
       "description": "A beautiful algebra warm-up covering equations, inequalities, functional intuition, and clever transformations.",
       "time": "90 minutes",
       "total_questions": 30,
+      "start-date": "14-11-2025",
+      "end-date": "16-11-2025",
       "start": "2025-11-15T10:00:00",
       "end": "2025-11-15T11:00:00"
     },
     {
-      "id": "mock-2025-geometry-02",
-      "title": "Geometry Mastery Challenge",
-      "description": "Deep geometry with circles, coordinate transforms, and elegant construction-style reasoning.",
-      "time": "90 minutes",
-      "total_questions": 25,
-      "start": "2025-11-17T09:00:00",
-      "end": "2025-11-17T10:30:00"
-    },
-    {
-      "id": "mock-2025-combinatorics-03",
-      "title": "Combinatorics Intensive",
-      "description": "A playful combinatorial test touching permutations, bijections, double counting, and small invariants.",
-      "time": "75 minutes",
-      "total_questions": 20,
-      "start": "2025-11-20T16:00:00",
-      "end": "2025-11-20T17:15:00"
+      "id": "uga-t-01",
+      "title": "UGA T-Test 1",
+      "description": "This test encapsulates the first thirty questions of the book offering questions of general mathematical logic of profit and loss and basic understanding of sets. The test lasts for two hours and offers thirty questions. There is no negative marking, and for each wrong attempt zero marks will be assumed, whereas for unattempted and correct answers, ome and four marks will be assumed respectively.",
+      "time": "2 Hours",
+      "total_questions": 30,
+      "start-date": "17-11-2025",
+      "end-date": "19-11-2025",
+      "start": "November 17, 2025",
+      "end": "Novemver 19, 2025"
     }
   ]
 }
