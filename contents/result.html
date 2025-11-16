@@ -268,7 +268,7 @@ let H = canvas.height = window.innerHeight;
 
 window.addEventListener('resize', ()=>{ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; });
 
-const PT_COUNT = Math.max(60, Math.floor((W*H)/90000)); // scale by screen size
+const PT_COUNT = Math.max(60, Math.floor((W*H)/90000));
 const pts = [];
 const mouse = { x: -9999, y: -9999, down:false };
 
@@ -286,34 +286,27 @@ for(let i=0;i<PT_COUNT;i++){
 
 function updateParticles(){
   for(const p of pts){
-    // move
     p.x += p.vx;
     p.y += p.vy;
 
-    // wrap
     if(p.x < -10) p.x = W + 10;
     if(p.x > W + 10) p.x = -10;
     if(p.y < -10) p.y = H + 10;
     if(p.y > H + 10) p.y = -10;
 
-    // reactive: repel slightly from mouse
     const dx = p.x - mouse.x;
     const dy = p.y - mouse.y;
     const dist2 = dx*dx + dy*dy;
-    const minDist = 90*90;
-    if(dist2 < minDist){
-      // push away with strength depending on distance
+    if(dist2 < 90*90){
       const dist = Math.sqrt(dist2) || 1;
       const strength = (90 - dist)/90 * 0.9;
       p.vx += (dx/dist) * strength * 0.08;
       p.vy += (dy/dist) * strength * 0.08;
     }
 
-    // friction so velocities don't explode
     p.vx *= 0.995;
     p.vy *= 0.995;
 
-    // slowly approach base opacity
     p.opacity += (p.baseOpacity - p.opacity) * 0.04;
   }
 }
@@ -349,43 +342,34 @@ window.addEventListener('touchmove', (e)=>{
 });
 
 /* ---------------------------
-   Data fetching & rendering
-   (preserve original logic)
+   Local-only Result Loading
    --------------------------- */
-const SHEETDB_ENDPOINT="https://sheetdb.io/api/v1/o183fvrgl6r69";
-const username = localStorage.getItem('displayName') || 'Guest';
-const suffix = sessionStorage.getItem('lastRandomSuffix') || '';
-const uniqueName = username + suffix;
 
-async function fetchResult(){
-    try{
-        const res = await fetch(`${SHEETDB_ENDPOINT}?display-name=${encodeURIComponent(uniqueName)}`);
-        if(!res.ok) throw new Error('Failed to fetch');
-        const data = await res.json();
-        if(!data.length) throw new Error('No data');
-        // parse the latest returned
-        const resultJson = JSON.parse(data[data.length-1].json);
-        fetchTestConfig(resultJson);
-    }catch(e){ console.error(e); alert('Failed to fetch result'); }
-}
+function loadLocalResult() {
+    let saved = localStorage.getItem("last_exam_submission");
+    if (!saved) {
+        alert("No saved exam data found.");
+        return;
+    }
 
-async function fetchTestConfig(result){
-    try{
-        const uid = result.session;
-        const res = await fetch(`JSON/tests/${uid}.json`);
-        if(!res.ok) throw new Error('Failed to fetch test config');
-        const testData = await res.json();
+    let result;
+    try {
+        result = JSON.parse(saved);
+    } catch (e) {
+        console.error(e);
+        alert("Saved exam data is corrupted.");
+        return;
+    }
 
-        const weight = (testData.marks && testData.marks.full) || 1;
-        const negative = (testData.marks && testData.marks.negative) || 0;
-        const nullMark = (testData.marks && testData.marks.null) || 0;
+    // marks already stored inside the saved exam object
+    const weight = result.marks_full;
+    const negative = result.marks_negative;
+    const nullMark = result.marks_null;
 
-        renderResult(result, weight, negative, nullMark);
-    }catch(e){ console.error(e); alert('Failed to fetch test configuration'); }
+    renderResult(result, weight, negative, nullMark);
 }
 
 function renderResult(result, weight, negative, nullMark){
-    // Summary
     const totalCorrect = result.questions.filter(q=>q.status==='correct').length;
     const totalIncorrect = result.questions.filter(q=>q.status==='incorrect').length;
     const totalNotAttempted = result.questions.filter(q=>q.status==='notAttempted').length;
@@ -401,7 +385,6 @@ function renderResult(result, weight, negative, nullMark){
     document.getElementById('totalNot').textContent = totalNotAttempted;
     document.getElementById('totalScore').textContent = totalScore;
 
-    // question list
     const qlist = document.getElementById('qlist');
     qlist.innerHTML = '';
     result.questions.forEach((q, idx)=>{
@@ -423,7 +406,6 @@ function renderResult(result, weight, negative, nullMark){
       qlist.appendChild(div);
     });
 
-    // charts data
     const labels = result.questions.map((_,i)=>`Q${i+1}`);
     const marksData = result.questions.map(q=>{
       if(q.status==='correct') return weight;
@@ -433,13 +415,12 @@ function renderResult(result, weight, negative, nullMark){
     const timeData = result.questions.map(q=>q.timeSpent);
     const distData = [totalCorrect, totalIncorrect, totalNotAttempted];
 
-    // create gradient for marks chart
     const marksCtx = document.getElementById('marksChart').getContext('2d');
     const g1 = marksCtx.createLinearGradient(0,0,0,300);
     g1.addColorStop(0, 'rgba(17,17,17,0.85)');
     g1.addColorStop(1, 'rgba(17,17,17,0.25)');
 
-    const marksChart = new Chart(marksCtx, {
+    new Chart(marksCtx, {
       type:'bar',
       data:{
         labels,
@@ -454,21 +435,20 @@ function renderResult(result, weight, negative, nullMark){
       options:{
         responsive:true,
         maintainAspectRatio:false,
-        plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label: (ctx)=> ` ${ctx.parsed.y}` } } },
+        plugins:{ legend:{ display:false } },
         scales:{
-          x:{ grid:{ display:false }, ticks:{ maxRotation:0 } },
-          y:{ beginAtZero:true, grid:{ color:'rgba(10,10,10,0.04)' } }
+          x:{ grid:{ display:false } },
+          y:{ beginAtZero:true }
         }
       }
     });
 
-    // time chart with gradient fill
     const timeCtx = document.getElementById('timeChart').getContext('2d');
     const g2 = timeCtx.createLinearGradient(0,0,0,300);
     g2.addColorStop(0, 'rgba(17,17,17,0.18)');
     g2.addColorStop(1, 'rgba(17,17,17,0.02)');
 
-    const timeChart = new Chart(timeCtx, {
+    new Chart(timeCtx, {
       type:'line',
       data:{
         labels,
@@ -487,20 +467,19 @@ function renderResult(result, weight, negative, nullMark){
         responsive:true,
         maintainAspectRatio:false,
         plugins:{ legend:{ display:false } },
-        scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true, grid:{ color:'rgba(10,10,10,0.04)' } } }
+        scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true } }
       }
     });
 
-    // doughnut distribution with nice gradients
     const distCtx = document.getElementById('distributionChart').getContext('2d');
 
-    const distChart = new Chart(distCtx, {
+    new Chart(distCtx, {
       type:'doughnut',
       data:{
         labels:['Correct','Incorrect','Not Attempted'],
         datasets:[{
           data: distData,
-          backgroundColor: [
+          backgroundColor:[
             'rgba(123, 212, 119, 0.95)',
             'rgba(255,99,71,0.95)',
             'rgba(200,200,200,0.85)'
@@ -508,25 +487,19 @@ function renderResult(result, weight, negative, nullMark){
           hoverOffset: 8
         }]
       },
-      options:{
-        responsive:true,
-        maintainAspectRatio:false,
-        plugins:{ legend:{ position: 'bottom' } }
-      }
+      options:{ responsive:true }
     });
 
-    // subtle animation: pulse the score card
     const scoreCard = document.getElementById('card-score');
     scoreCard.animate([
-      { transform: 'scale(1)', boxShadow: '0 10px 30px rgba(12,20,30,0.06)' },
-      { transform: 'scale(1.02)', boxShadow: '0 16px 40px rgba(12,20,30,0.08)' },
-      { transform: 'scale(1)', boxShadow: '0 10px 30px rgba(12,20,30,0.06)' }
+      { transform: 'scale(1)' },
+      { transform: 'scale(1.02)' },
+      { transform: 'scale(1)' }
     ], { duration: 800, easing:'ease-in-out' });
-
 }
 
 /* initialize */
-fetchResult();
+loadLocalResult();
 </script>
 </body>
 </html>
