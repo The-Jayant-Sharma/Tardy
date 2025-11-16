@@ -11,43 +11,43 @@
   "questions": [
     {
       "id": "q1",
-      "question": "$$\\text{A worker suffers a }20\\%\\text{ cut in wages. He regains his original pay by obtaining a rise of:}$$",
+      "question": "$$\\text{A worker suffers a }20\\%\\text{ cut in wages.} <br> \\text{He regains his original pay by obtaining a rise of:}$$",
       "options": ["$$20\\%$$", "$$22\\tfrac{1}{2}\\%$$", "$$25\\%$$", "$$27\\tfrac{1}{9}\\%$$"],
       "answer": 2
     },
     {
       "id": "q2",
-      "question": "$$\\text{If } m \\text{ men can do a job in } d \\text{ days, then the number of days in which } (m+r) \\text{ men can do the job is:}$$",
+      "question": "$$\\text{If } m \\text{ men can do a job in } d \\text{ days,}\\newline\\text{then the number of days in which } (m+r) \\text{ men can do the job is:}$$",
       "options": ["$$d+r$$", "$$\\frac{d}{m}(m+r)$$", "$$\\frac{d}{m+r}$$", "$$\\frac{md}{m+r}$$"],
       "answer": 3
     },
     {
       "id": "q3",
-      "question": "$$\\text{A boy walks from his home to school at }6\\text{ km/h and returns at }2\\text{ km/h.} \\\\ \\text{His average speed is:}$$",
+      "question": "$$\\text{A boy walks from his home to school at }6\\text{ km/h}\\newline\\text{and returns at }2\\text{ km/h. His average speed is:}$$",
       "options": ["$$3$$", "$$4$$", "$$5$$", "$$\\sqrt{12}$$"],
       "answer": 0
     },
     {
       "id": "q4",
-      "question": "$$\\text{A car travels from } P \\text{ to } Q \\text{ at }30\\text{ km/h and returns at }40\\text{ km/h.} \\\\ \\text{Its average speed is nearest to:}$$",
+      "question": "$$\\text{A car travels from } P \\text{ to } Q \\text{ at }30\\text{ km/h}\\newline\\text{and returns at }40\\text{ km/h. Average speed is nearest to:}$$",
       "options": ["$$33$$", "$$34$$", "$$35$$", "$$36$$"],
       "answer": 1
     },
     {
       "id": "q5",
-      "question": "$$\\text{A man invests Rs. }10{,}000\\text{ for a year. Of this, Rs. }4{,}000\\text{ is invested at }5\\% \\\\ \\text{and Rs. }3{,}500\\text{ at }4\\%. \\text{The rest at }\\alpha\\% .\\newline \\text{Total interest is Rs. }500. \\text{ Then }\\alpha = ?$$",
+      "question": "$$\\text{A man invests Rs. }10{,}000\\text{ for a year.}\\newline\\text{Of this, Rs. }4{,}000\\text{ at }5\\%,\\; Rs. 3{,}500\\text{ at }4\\%.\\newline\\text{The rest at }\\alpha\\%.\\newline\\text{Total interest is Rs. }500.\\;\\alpha = ?$$",
       "options": ["$$6.2$$", "$$6.3$$", "$$6.4$$", "$$6.5$$"],
       "answer": 2
     },
     {
       "id": "q6",
-      "question": "$$\\text{Let }x_1,x_2,\\dots,x_{100}\\text{ be positive integers with }x_i + x_{i+1} = k. \\\\ \\text{If }x_{10}=1,\\text{ find }x_1.$$",
+      "question": "$$\\text{Let }x_1,x_2,\\dots,x_{100}\\text{ be positive integers}\\newline\\text{such that }x_i + x_{i+1} = k.\\newline\\text{If }x_{10}=1,\\text{ find }x_1.$$",
       "options": ["$$k$$", "$$k-1$$", "$$k+1$$", "$$1$$"],
       "answer": 1
     },
     {
       "id": "q7",
-      "question": "$$a_0 = 1,\\; a_1 = 1,\\; a_n = a_{n-1}a_{n-2} + 1. \\\\ \\text{Then:}$$",
+      "question": "$$a_0 = 1,\\; a_1 = 1,\\newline a_n = a_{n-1}a_{n-2} + 1.\\newline\\text{Then:}$$",
       "options": [
         "$$a_{465}\\text{ odd, }a_{466}\\text{ even}$$",
         "$$a_{465}\\text{ odd, }a_{466}\\text{ odd}$$",
@@ -58,7 +58,7 @@
     },
     {
       "id": "q8",
-      "question": "$$\\text{Two trains of equal length }L\\text{ travel at speeds }v_1,v_2\\text{ (mph)}. \\\\ \\text{They take }T\\text{ seconds to cross each other. Find }L\\text{ in feet. (1 mile = 5280 ft)}$$",
+      "question": "$$\\text{Two trains of equal length }L\\text{ travel at speeds }v_1,v_2.\\newline\\text{They take }T\\text{ seconds to cross each other.}\\newline\\text{Find }L\\text{ in feet. (1 mile = 5280 ft)}$$",
       "options": [
         "$$\\frac{117T}{15(v_1+v_2)}$$",
         "$$\\frac{157T}{11(v_1+v_2)}$$",
@@ -69,8 +69,13 @@
     },
     {
       "id": "q9",
-      "question": "$$\\text{A salesman sold two pipes for Rs.12 each. Profit on one was }20\\%\\text{ and loss on the other }20\\%. \\\\ \\text{Overall, he:}$$",
-      "options": ["$$\\text{lost Re. 1}$$", "$$\\text{gained Re. 1}$$", "$$\\text{neither gained nor lost}$$", "$$\\text{lost Rs. 2}$$"],
+      "question": "$$\\text{A salesman sold two pipes for Rs.12 each.}\\newline\\text{Profit on one = }20\\%,\\; \\text{loss on the other = }20\\%.\\newline\\text{Overall, he:}$$",
+      "options": [
+        "$$\\text{lost Re. 1}$$",
+        "$$\\text{gained Re. 1}$$",
+        "$$\\text{neither gained nor lost}$$",
+        "$$\\text{lost Rs. 2}$$"
+      ],
       "answer": 0
     },
     {
@@ -87,31 +92,36 @@
     },
     {
       "id": "q12",
-      "question": "$$\\text{July 3, 1977 was a Sunday. Then July 3, 1970 was:}$$",
+      "question": "$$\\text{July 3, 1977 was a Sunday.}\\newline\\text{Then July 3, 1970 was:}$$",
       "options": ["$$\\text{Wednesday}$$", "$$\\text{Friday}$$", "$$\\text{Sunday}$$", "$$\\text{Tuesday}$$"],
       "answer": 1
     },
     {
       "id": "q13",
-      "question": "$$\\text{June 10, 1979 was a Sunday. Then May 10, 1972 was:}$$",
+      "question": "$$\\text{June 10, 1979 was a Sunday.}\\newline\\text{Then May 10, 1972 was:}$$",
       "options": ["$$\\text{Wednesday}$$", "$$\\text{Thursday}$$", "$$\\text{Tuesday}$$", "$$\\text{Friday}$$"],
       "answer": 3
     },
     {
       "id": "q14",
-      "question": "$$\\text{A man left home at 14{:}30, reached a village at 15{:}15 as per village clock.} \\\\ \\text{Stayed 25 minutes, returned on a route }\\tfrac{5}{4}\\text{ longer at twice the speed.} \\\\ \\text{Reached home at 16{:}00. Compare the village clock to home clock.}$$",
-      "options": ["$$10\\text{ min slow}$$", "$$5\\text{ min slow}$$", "$$5\\text{ min fast}$$", "$$20\\text{ min fast}$$"],
+      "question": "$$\\text{A man left home at 14{:}30, reached a village at 15{:}15}\\newline\\text{(village clock). Stayed 25 minutes, returned by route }\\tfrac{5}{4}\\text{ longer}\\newline\\text{at twice the speed, reached home at 16{:}00.}\\newline\\text{Compare village clock to home clock.}$$",
+      "options": [
+        "$$10\\text{ min slow}$$",
+        "$$5\\text{ min slow}$$",
+        "$$5\\text{ min fast}$$",
+        "$$20\\text{ min fast}$$"
+      ],
       "answer": 1
     },
     {
       "id": "q15",
-      "question": "$$\\text{If } \\frac{a+b}{b+c} = \\frac{c+d}{d+a}, \\text{ then:}$$",
+      "question": "$$\\frac{a+b}{b+c} = \\frac{c+d}{d+a}.\\newline\\text{Then:}$$",
       "options": ["$$a=c$$", "$$\\text{either }a=c\\text{ or }a+b+c+d=0$$", "$$a+b+c+d=0$$", "$$a=c,\\; b=d$$"],
       "answer": 1
     },
     {
       "id": "q16",
-      "question": "$$(1+q)(1+q^2)(1+q^4)(1+q^8)(1+q^{16})(1+q^{32})(1+q^{64}),\\; q\\ne1$$",
+      "question": "$$(1+q)(1+q^2)(1+q^4)(1+q^8)(1+q^{16})(1+q^{32})(1+q^{64}),\\; q\\neq1$$",
       "options": [
         "$$\\frac{1-q^{128}}{1-q}$$",
         "$$\\frac{1-q^{64}}{1-q}$$",
@@ -122,19 +132,19 @@
     },
     {
       "id": "q17",
-      "question": "$$\\text{10\\% voters did not vote; 60 votes blank; winner had 47\\% of total voters; gained 308 votes over rival.} \\\\ \\text{Find total voters.}$$",
+      "question": "$$10\\%\\text{ voters did not vote; 60 blank votes;}\\newline\\text{winner had 47\\% of total voters;}\\newline\\text{won by 308 votes. Find total voters.}$$",
       "options": ["$$3600$$", "$$6200$$", "$$4575$$", "$$6028$$"],
       "answer": 0
     },
     {
       "id": "q18",
-      "question": "$$\\text{A student took 5 papers. Full marks same for each. Marks proportional to }2:3:4:5:6.} \\\\ \\text{He obtained }\\tfrac{3}{5}\\text{ of total full marks. Number of papers with >50\\% marks is:}$$",
+      "question": "$$\\text{A student took 5 papers with marks proportional to }2:3:4:5:6.\\newline\\text{He obtained }\\tfrac{3}{5}\\text{ of total full marks.}\\newline\\text{Number of papers with }{>}50\\%\\text{ marks is:}$$",
       "options": ["$$2$$", "$$3$$", "$$4$$", "$$5$$"],
       "answer": 1
     },
     {
       "id": "q19",
-      "question": "$$\\text{Two contestants run a 3 km race on a circular track of length 300 m. Speeds ratio }4:3.} \\\\ \\text{How often and where does winner pass the other? (Initial start not counted)}$$",
+      "question": "$$\\text{Two contestants run a 3 km race on a circular track of length }300\\text{ m.}\\newline\\text{Speeds ratio }4:3.\\newline\\text{How often and where does winner pass the other?}$$",
       "options": [
         "$$4\\text{ times at start point}$$",
         "$$2\\text{ times at start point}$$",
@@ -145,25 +155,25 @@
     },
     {
       "id": "q20",
-      "question": "$$a+7b+3c+5d=0 \\\\ 8a+6b+c+2d=-16 \\\\ 2a+5b+4c+8d=-16 \\\\ 5a+3b+7c+d=-16 \\\\ \\text{Find }(a+d)(b+c).$$",
+      "question": "$$a+7b+3c+5d=0\\newline8a+6b+c+2d=-16\\newline2a+5b+4c+8d=-16\\newline5a+3b+7c+d=-16\\newline\\text{Find }(a+d)(b+c).$$",
       "options": ["$$16$$", "$$-16$$", "$$0$$", "$$\\text{None}$$"],
       "answer": 2
     },
     {
       "id": "q21",
-      "question": "$$x,y\\text{ positive integers, }x>y. \\\\ 3x+2y \\equiv 2\\pmod 5, \\quad 2x+3y \\equiv 3\\pmod 5. \\\\ \\text{Then }(x-y)\\bmod 5 = ?$$",
+      "question": "$$x,y\\text{ positive integers, }x>y.\\newline3x+2y \\equiv 2\\pmod 5,\\; 2x+3y \\equiv 3\\pmod 5.\\newline\\text{Find }(x-y)\\bmod 5.$$",
       "options": ["$$2$$", "$$1$$", "$$4$$", "$$\\text{None}$$"],
       "answer": 2
     },
     {
       "id": "q22",
-      "question": "$$x+y+z=10,\\; x,y,z\\in\\mathbb{Z}^+. \\\\ \\text{Number of solutions?}$$",
+      "question": "$$x+y+z=10,\\; x,y,z\\in\\mathbb{Z}^+.\\newline\\text{Number of solutions?}$$",
       "options": ["$$36$$", "$$121$$", "$$10^3-10$$", "$$\\binom{10}{3}-\\binom{10}{2}$$"],
       "answer": 0
     },
     {
       "id": "q23",
-      "question": "$$\\text{Clock hands observed from 12:45 pm onward.} \\\\ \\text{When next will they point in the same direction?}$$",
+      "question": "$$\\text{Clock hands observed from 12{:}45 pm onward.}\\newline\\text{When next will they point in the same direction?}$$",
       "options": [
         "$$1{:}03\\text{ and }1{:}04$$",
         "$$1{:}04\\text{ and }1{:}05$$",
@@ -174,7 +184,7 @@
     },
     {
       "id": "q24",
-      "question": "$$\\text{Packets contain }A,B,C. \\\\ 5A+3B+7C=24.50; \\quad 2A+3B+3C=17.00. \\\\ \\text{Find cost of packet with }16A+9B+23C.$$",
+      "question": "$$\\text{Packets contain }A,B,C.\\newline5A+3B+7C=24.50,\\;2A+3B+3C=17.00.\\newline\\text{Find cost of }16A+9B+23C.$$",
       "options": ["$$55.00$$", "$$75.50$$", "$$100.00$$", "$$\\text{Cannot determine}$$"],
       "answer": 0
     },
@@ -191,7 +201,7 @@
     },
     {
       "id": "q26",
-      "question": "$$\\text{A simplex: whenever }S\\text{ is included, all nonempty subsets of }S\\text{ included.} \\\\ \\text{Which collection is a simplex?}$$",
+      "question": "$$\\text{A simplex: whenever }S\\text{ is included, all nonempty subsets of }S\\text{ included.}\\newline\\text{Which collection is a simplex?}$$",
       "options": [
         "$$\\text{All subsets with property that }1\\in S$$",
         "$$\\text{All subsets with exactly 4 elements}$$",
@@ -202,7 +212,7 @@
     },
     {
       "id": "q27",
-      "question": "$$S=\\{0, \\text{all even integers}\\}. \\\\ \\text{Which operations keep }S\\text{ closed?} \\\\ \\text{[1] addition, [2] subtraction, [3] multiplication, [4] division, [5] arithmetic mean}$$",
+      "question": "$$S=\\{0, \\text{all even integers}\\}.\\newline\\text{Which operations keep }S\\text{ closed?}\\newline[1]\\text{ addition, }[2]\\text{ subtraction, }[3]\\text{ multiplication, }[4]\\text{ division, }[5]\\text{ mean}$$",
       "options": [
         "$$[1],[2],[3],[4]$$",
         "$$[1],[2],[3],[5]$$",
@@ -211,10 +221,9 @@
       ],
       "answer": 3
     },
-
     {
       "id": "q28",
-      "question": "$$\\textbf{(Definition)}\\\\ \\text{For any sets }A,B:\\newline A \\setminus B = \\{x : x \\in A \\text{ and } x \\notin B\\} \\text{ (set difference)};\\\\ A \\triangle B = (A \\setminus B) \\cup (B \\setminus A) \\text{ (symmetric difference).}\\\\[6pt] \\text{If } X = \\{1,2,3,4\\},\\; Y = \\{2,3,5,7\\},\\; Z = \\{3,6,8,9\\},\\; W = \\{2,4,8,10\\}, \\\\ \\text{then } (X \\triangle Y) \\triangle (Z \\triangle W) \\text{ is}$$",
+      "question": "$$\\textbf{(Definition)}\\newline A \\setminus B = \\{x: x\\in A, x\\notin B\\}\\;\\text{(set difference)};\\newline A \\triangle B = (A\\setminus B)\\cup(B\\setminus A)\\;\\text{(symmetric difference).}\\newline X=\\{1,2,3,4\\},\\;Y=\\{2,3,5,7\\},\\;Z=\\{3,6,8,9\\},\\;W=\\{2,4,8,10\\}.\\newline\\text{Compute }(X\\triangle Y)\\triangle(Z\\triangle W).$$",
       "options": [
         "$$\\{4,8\\}$$",
         "$$\\{1,5,6,10\\}$$",
@@ -223,27 +232,25 @@
       ],
       "answer": 3
     },
-
     {
       "id": "q29",
-      "question": "$$\\text{If } X, Y, Z \\text{ are any three sets of numbers, then the set of all numbers belonging}\\\\ \\text{to exactly two of the sets } X, Y, Z \\text{ is:}$$",
+      "question": "$$\\text{If }X,Y,Z\\text{ are sets, the set of numbers belonging}\\newline\\text{to exactly two of }X,Y,Z\\text{ is:}$$",
       "options": [
         "$$(X \\cap Y) \\cup (Y \\cap Z) \\cup (Z \\cap X)$$",
-        "$$(X \\cup Y \\cup Z) \\setminus \\bigl((X \\triangle Y) \\triangle Z\\bigr)$$",
+        "$$(X \\cup Y \\cup Z) \\setminus ((X \\triangle Y) \\triangle Z)$$",
         "$$(X \\triangle Y) \\cup (Y \\triangle Z) \\cup (Z \\triangle X)$$",
-        "$$\\text{not necessarily any of (A) to (C)}$$"
+        "$$\\text{not necessarily any of (A)–(C)}$$"
       ],
       "answer": 3
     },
-
     {
       "id": "q30",
-      "question": "$$\\text{For any three sets } P, Q, R, \\; s \\text{ is an element of } (P \\triangle Q) \\triangle R \\text{ if } s \\text{ is in:}$$",
+      "question": "$$\\text{For sets }P,Q,R,\\; s\\in(P\\triangle Q)\\triangle R\\newline\\text{iff }s\\text{ is in:}$$",
       "options": [
-        "$$\\text{exactly one of } P, Q, R$$",
-        "$$\\text{at least one of } P, Q, R, \\text{ but not in all three at the same time}$$",
-        "$$\\text{exactly two of } P, Q, R$$",
-        "$$\\text{exactly one of } P, Q, R \\text{ or in all three of them}$$"
+        "$$\\text{exactly one of }P,Q,R$$",
+        "$$\\text{at least one of }P,Q,R \\text{ but not all three}$$",
+        "$$\\text{exactly two of }P,Q,R$$",
+        "$$\\text{exactly one of }P,Q,R \\text{ or in all three}$$"
       ],
       "answer": 3
     }
