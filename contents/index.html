@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tardy — Guest Login</title>
+<title>Tardy — Login</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; }
 
-  /* Particle canvas */
   #particle-canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; background:#ffffff; }
 
-  /* Login container */
   .login-container {
     position: relative;
     z-index: 1;
@@ -27,18 +25,18 @@
     border-radius: 20px;
     padding: 30px;
     text-align: center;
-    color: #111111;
+    color: #111;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
   }
 
-  .login-container h1 {
+  h1 {
     font-size: 28px;
     margin-bottom: 20px;
     font-weight: 700;
-    color: #111111;
+    color: #111;
   }
 
-  .login-container input {
+  select, input {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 18px;
@@ -46,35 +44,40 @@
     border: 1px solid #ccc;
     outline: none;
     font-size: 16px;
-    color: #111111;
     background:#f9f9f9;
     transition:0.2s;
   }
 
-  .login-container input:focus {
-    border-color: #111111;
+  select:focus, input:focus {
+    border-color: #111;
     box-shadow:0 0 8px rgba(0,0,0,0.1);
   }
 
-  .login-container button {
+  button {
     padding: 12px 20px;
     width: 100%;
     border-radius: 12px;
     border: none;
-    background: #111111;
-    color: #ffffff;
+    background: #111;
+    color: #fff;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 5px;
   }
 
-  .login-container button:hover {
-    background: #333333;
+  button:hover { background: #333; }
+
+  #continueBtn {
+    background: black;
+    margin-bottom: 15px;
   }
+
+  #continueBtn:hover { background:#222; }
 
   @media(max-width: 500px){
     .login-container { padding: 20px; }
-    .login-container h1 { font-size: 24px; }
+    h1 { font-size: 24px; }
   }
 </style>
 </head>
@@ -84,63 +87,136 @@
 
 <div class="login-container">
   <h1>Welcome to Tardy</h1>
-  <input type="text" id="guestName" placeholder="Enter your name">
-  <button id="startBtn">Start as Guest</button>
+
+  <div id="continueSection" style="display:none;">
+    <button id="continueBtn"></button>
+  </div>
+
+  <select id="userSelect">
+    <option value="">Select a username</option>
+  </select>
+
+  <input type="password" id="passInput" placeholder="Enter passcode" style="display:none;">
+
+  <button id="loginBtn" style="display:none;">Login</button>
 </div>
 
 <script>
-  // Particle animation (black transparent particles)
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
+/* ---------------------
+   PARTICLE BACKGROUND
+---------------------- */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-  const particles = [];
-  const PARTICLE_COUNT = 60;
+const particles = [];
+const PARTICLE_COUNT = 60;
 
-  class Particle {
-    constructor() { this.reset(); }
-    reset() {
-      this.x = Math.random()*width;
-      this.y = Math.random()*height;
-      this.vx = (Math.random()-0.5)*0.3;
-      this.vy = (Math.random()-0.5)*0.3;
-      this.size = Math.random()*3 + 1;
-      this.opacity = Math.random()*0.15 + 0.05;
-    }
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      if(this.x<0||this.x>width||this.y<0||this.y>height) this.reset();
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-      ctx.fillStyle = `rgba(0,0,0,${this.opacity})`;
-      ctx.fill();
-    }
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random()*width;
+    this.y = Math.random()*height;
+    this.vx = (Math.random()-0.5)*0.3;
+    this.vy = (Math.random()-0.5)*0.3;
+    this.size = Math.random()*3 + 1;
+    this.opacity = Math.random()*0.15 + 0.05;
   }
-
-  for(let i=0;i<PARTICLE_COUNT;i++) particles.push(new Particle());
-
-  function animate() {
-    ctx.clearRect(0,0,width,height);
-    particles.forEach(p=>{ p.update(); p.draw(); });
-    requestAnimationFrame(animate);
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if(this.x<0||this.x>width||this.y<0||this.y>height) this.reset();
   }
-  animate();
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle = `rgba(0,0,0,${this.opacity})`;
+    ctx.fill();
+  }
+}
 
-  window.addEventListener('resize',()=>{
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+for(let i=0;i<PARTICLE_COUNT;i++) particles.push(new Particle());
+
+function animate(){
+  ctx.clearRect(0,0,width,height);
+  particles.forEach(p=>{ p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize', ()=>{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
+
+/* ---------------------
+   LOGIN LOGIC
+---------------------- */
+let userData = [];
+
+// Load Users
+fetch("JSON/users.json")
+  .then(res => res.json())
+  .then(data => {
+    userData = data;
+    const select = document.getElementById("userSelect");
+
+    data.forEach(u=>{
+      const opt = document.createElement("option");
+      opt.value = u.user;
+      opt.textContent = u.user;
+      select.appendChild(opt);
+    });
+
+    checkAutoContinue();
   });
 
-  // Guest login
-  document.getElementById('startBtn').addEventListener('click', ()=>{
-    const name = document.getElementById('guestName').value.trim() || 'Guest';
-    localStorage.setItem('displayName', name);
-    window.location.href = 'first-page.html';
-  });
+// Auto-continue if stored username still exists
+function checkAutoContinue() {
+  const saved = localStorage.getItem("displayName");
+  if(!saved) return;
+
+  const exists = userData.some(u => u.user === saved);
+  if(!exists) return;
+
+  const contBtn = document.getElementById("continueBtn");
+  contBtn.innerText = "Continue as " + saved;
+  document.getElementById("continueSection").style.display = "block";
+
+  contBtn.onclick = () => window.location.href = "first-page.html";
+}
+
+// When username selected
+document.getElementById("userSelect").addEventListener("change", ()=>{
+  const user = document.getElementById("userSelect").value;
+  if(user){
+    document.getElementById("passInput").style.display = "block";
+    document.getElementById("loginBtn").style.display = "block";
+  } else {
+    document.getElementById("passInput").style.display = "none";
+    document.getElementById("loginBtn").style.display = "none";
+  }
+});
+
+// Login
+document.getElementById("loginBtn").addEventListener("click", ()=>{
+  const user = document.getElementById("userSelect").value;
+  const pass = document.getElementById("passInput").value.trim();
+
+  const found = userData.find(u => u.user === user && u.passcode === pass);
+
+  if(!found){
+    alert("Incorrect passcode.");
+    return;
+  }
+
+  // Save to local storage
+  localStorage.setItem("displayName", user);
+
+  window.location.href = "first-page.html";
+});
 </script>
 
 </body>
