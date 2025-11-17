@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archived Result — Tardy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.question {
+  padding: 16px;
+  margin-bottom: 16px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+}
+
+.correct {
+  color: #4cf596;
+}
+
+.incorrect {
+  color: #ff6b6b;
+}
+
+.notAttempted {
+  color: #cccccc;
+}
+
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>  <div class="container">
+    <h1>Archived Result</h1>
+    <div id="resultContainer" class="card">Loading...</div>
+  </div>  <script>
+    // PARTICLE BACKGROUND
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const PARTICLE_COUNT = 120;
+    const particles = [];
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.6,
+        dy: (Math.random() - 0.5) * 0.6,
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+
+      particles.forEach((p) => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+
+    // =========================
+    // LOAD ARCHIVED ATTEMPT
+    // =========================
+
+    const saved = localStorage.getItem("archived_view_attempt");
+    const resultBox = document.getElementById("resultContainer");
+
+    if (!saved) {
+      resultBox.innerHTML = "No archived attempt found.";
+    } else {
+      const data = JSON.parse(saved);
+
+      const sessionId = data.sessionId;
+      const statuses = data.statuses;
+      const fullData = data.fullData;
+
+      // Fetch marking scheme JSON
+      fetch(`JSON/tests/${sessionId}.json`)
+        .then(res => res.json())
+        .then(testJson => {
+          const marking = testJson.marks;
+
+          let html = `<h2>Session: ${sessionId}</h2>`;
+          html += `<p>Total Questions: ${statuses.length}</p>`;
+
+          html += `<h3>Questions</h3>`;
+
+          statuses.forEach((st, i) => {
+            let markText = '';
+
+            if (st === 'notAttempted') markText = marking.null;
+            if (st === 'correct') markText = marking.full;
+            if (st === 'incorrect') markText = marking.negative;
+
+            html += `
+              <div class="question">
+                <h4>Q${i + 1} <span class="${st}">${st}</span></h4>
+                <p>Marks: ${markText}</p>
+              </div>
+            `;
+          });
+
+          resultBox.innerHTML = html;
+        })
+        .catch(err => {
+          resultBox.innerHTML = "Failed to load marking scheme.";
+        });
+    }
+    // Fetch marking scheme from JSON/tests/(examId).json
+  async function fetchMarkingScheme(examId) {
+    try {
+      const response = await fetch(`JSON/tests/${examId}.json`);
+      const data = await response.json();
+      return data.marks;
+    } catch (err) {
+      console.error('Failed to load marking scheme:', err);
+      return { full: 4, negative: -1, null: 0 };
+    }
+  }
+
+  async function initMarking(){
+    const examId = archived.examId || archived.sessionId;
+    markingScheme = await fetchMarkingScheme(examId);
+    calculateTotal();
+    renderDetails();
+  }
+
+  initMarking();
+</script></body>
+</html>
