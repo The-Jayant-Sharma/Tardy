@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archived Results — Tardy</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --muted: #666;
+      --accent: #111111;
+      --card: rgba(255,255,255,0.92);
+      --glass: rgba(255,255,255,0.7);
+      --success: rgba(144,238,144,0.9);
+      --danger: rgba(255,99,71,0.9);
+    }
+
+    html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#fbfdff 0%, #f7f9fc 100%);color:var(--accent);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+    /* particle canvas */
+    #particles {
+      position: fixed;
+      inset: 0;
+      width:100%;
+      height:100%;
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 5;
+      width:100%;
+      max-width:1100px;
+      margin: 0 auto;
+      padding: 28px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      width: calc(100% - 48px);
+      max-width:1100px;
+      margin: 0 auto 18px auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 8px 30px rgba(12,20,30,0.06);
+      text-align:center;
+    }
+
+    .top-row {
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .user-box {
+      background:var(--card);
+      padding:10px 14px;
+      border-radius:10px;
+      box-shadow: 0 8px 20px rgba(12,20,30,0.04);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-weight:600;
+    }
+
+    .container {
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+    }
+
+    .series-card {
+      background: var(--glass);
+      border-radius:12px;
+      padding:16px;
+      box-shadow: 0 10px 30px rgba(12,20,30,0.04);
+      border:1px solid rgba(255,255,255,0.6);
+    }
+
+    .series-title { font-weight:800; margin:0 0 12px 0; font-size:16px; color:var(--muted); display:flex; align-items:center; justify-content:space-between; gap:12px; }
+
+    .boxes {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .box {
+      min-width:110px;
+      max-width:160px;
+      padding:12px 14px;
+      border-radius:10px;
+      background:#fff;
+      box-shadow: 0 8px 20px rgba(12,20,30,0.04);
+      border:1px solid rgba(0,0,0,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      cursor:pointer;
+      transition: transform .14s ease, box-shadow .14s ease;
+      font-weight:700;
+    }
+
+    .box:hover { transform:translateY(-6px); box-shadow: 0 18px 40px rgba(12,20,30,0.08); }
+
+    .box .id { font-size:14px; color:var(--accent); }
+    .box .meta { font-size:12px; color:var(--muted); font-weight:600; }
+
+    .panel {
+      background: var(--card);
+      padding:16px;
+      border-radius:12px;
+      box-shadow: 0 10px 30px rgba(12,20,30,0.04);
+      border:1px solid rgba(255,255,255,0.6);
+    }
+
+    .attempts-list { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .attempt {
+      padding:10px 12px;
+      border-radius:8px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,0.06);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .attempt:hover { transform:translateY(-4px); box-shadow: 0 10px 30px rgba(12,20,30,0.06); }
+
+    .muted { color:var(--muted); font-size:13px; }
+
+    .controls { display:flex; gap:10px; align-items:center; margin-left:auto; }
+
+    .btn {
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--accent);
+      color:white;
+      border:none;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .small { padding:6px 8px; border-radius:8px; background:rgba(0,0,0,0.06); border:none; cursor:pointer; font-weight:700; }
+
+    @media (max-width:900px){
+      .box { min-width:calc(50% - 18px); }
+    }
+    @media (max-width:600px){
+      .box { min-width:100%; }
+      .top-row { flex-direction:column; align-items:flex-start; }
+    }
+
+    .hint { margin-top:8px; font-size:13px; color:var(--muted); }
+    .empty { padding:18px; text-align:center; color:var(--muted); font-weight:700; }
+
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="page">
+    <div class="header">Archived Results — Tardy</div>
+
+    <div class="top-row">
+      <div class="user-box" id="userBox">
+        <div>Viewing as</div>
+        <div id="userName" style="margin-left:6px;color:var(--accent);font-weight:800;"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="small" id="showAllBtn" title="Toggle show attempts from all users">Show all users</button>
+        <button class="btn" id="refreshBtn">Refresh</button>
+      </div>
+    </div>
+
+    <div class="container" id="content">
+      <!-- Series cards will be injected here -->
+    </div>
+
+    <!-- Right/bottom panel that shows attempts for selected exam -->
+    <div id="selectedPanel" style="margin-top:18px;"></div>
+  </div>
+
+<script>
+/* ========================
+   PARTICLES (simple)
+   ======================== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = window.innerWidth;
+let H = canvas.height = window.innerHeight;
+window.addEventListener('resize', ()=>{ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; initParticles(); });
+
+let pts = [], PT_COUNT = Math.max(40, Math.floor((W*H)/120000));
+function initParticles(){
+  pts = [];
+  PT_COUNT = Math.max(40, Math.floor((W*H)/120000));
+  for(let i=0;i<PT_COUNT;i++){
+    pts.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: Math.random()*2 + 0.6,
+      vx: (Math.random()-0.5)*0.3,
+      vy: (Math.random()-0.5)*0.3,
+      o: Math.random()*0.4 + 0.06
+    });
+  }
+}
+initParticles();
+function loop(){
+  ctx.clearRect(0,0,W,H);
+  for(const p of pts){
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(0,0,0,${p.o})`;
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < -10) p.x = W+10;
+    if(p.x > W+10) p.x = -10;
+    if(p.y < -10) p.y = H+10;
+    if(p.y > H+10) p.y = -10;
+  }
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* ========================
+   ARCHIVE PAGE LOGIC
+   ======================== */
+
+const content = document.getElementById('content');
+const selectedPanel = document.getElementById('selectedPanel');
+const userNameEl = document.getElementById('userName');
+const showAllBtn = document.getElementById('showAllBtn');
+const refreshBtn = document.getElementById('refreshBtn');
+
+let archivedIndex = null; // structure from JSON/archived.json
+let showAllUsers = false;
+
+// display current displayName
+const storedName = localStorage.getItem('displayName') || null;
+userNameEl.textContent = storedName ? storedName : 'Guest';
+
+/** Utility: robust JSON parsing for the "json" field.
+ * Some entries in your archive are double- or triple-encoded strings.
+ * We'll try a few parsing strategies.
+ */
+function robustParseJsonField(s){
+  if(!s) return null;
+  if(typeof s !== 'string') return s;
+  // Try a few times: parse directly, parse after unwrapping quotes, parse twice
+  try { return JSON.parse(s); } catch(e){}
+  try {
+    // remove wrapping quotes if present and double-double quotes sequences
+    let cleaned = s.replace(/""/g, '"').replace(/^"(.*)"$/, '$1');
+    return JSON.parse(cleaned);
+  } catch(e){}
+  try {
+    // sometimes it's escaped: try parse twice
+    let once = JSON.parse(s);
+    if(typeof once === 'string') return JSON.parse(once);
+    return once;
+  } catch(e){}
+  // last attempt: try to fix common escape issues
+  try {
+    const cleaned = s.replace(/\\"/g, '"').replace(/\\n/g,'');
+    return JSON.parse(cleaned);
+  } catch(e){}
+  // give up
+  return null;
+}
+
+/** fetch archived index (series -> exam ids)
+ * Expected archived.json structure (example):
+ * {
+ *   "series": {
+ *     "S": ["uga-t-01","uga-t-02"],
+ *     "P": ["phy-01"]
+ *   }
+ * }
+ */
+async function loadIndex(){
+  content.innerHTML = '<div class="empty">Loading archive index…</div>';
+  try {
+    const res = await fetch('JSON/archived.json', {cache: "no-store"});
+    if(!res.ok) throw new Error('archive index not found');
+    archivedIndex = await res.json();
+    renderIndex();
+  } catch (e) {
+    content.innerHTML = `<div class="empty">Failed to load archive index. Check JSON/archived.json</div>`;
+    console.error(e);
+  }
+}
+
+/** render UI for series & boxes */
+function renderIndex(){
+  content.innerHTML = '';
+  if(!archivedIndex || !archivedIndex.series){
+    content.innerHTML = `<div class="empty">No series found in archived.json</div>`;
+    return;
+  }
+
+  const series = archivedIndex.series;
+  for(const seriesName of Object.keys(series)){
+    const card = document.createElement('div');
+    card.className = 'series-card';
+
+    const head = document.createElement('div');
+    head.className = 'series-title';
+    head.innerHTML = `<div>Test Series ${seriesName}</div><div class="muted">${series[seriesName].length} tests</div>`;
+    card.appendChild(head);
+
+    const boxes = document.createElement('div');
+    boxes.className = 'boxes';
+
+    series[seriesName].forEach((examId, idx)=>{
+      const b = document.createElement('div');
+      b.className = 'box';
+      b.dataset.exam = examId;
+
+      const label = document.createElement('div');
+      label.className = 'id';
+      label.textContent = examId;
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = `Test ${idx+1}`;
+
+      const hint = document.createElement('div');
+      hint.className = 'muted';
+      hint.textContent = 'Click to view attempts';
+
+      b.appendChild(label);
+      b.appendChild(meta);
+      b.appendChild(hint);
+
+      b.addEventListener('click', ()=> onSelectExam(examId));
+      boxes.appendChild(b);
+    });
+
+    card.appendChild(boxes);
+    content.appendChild(card);
+  }
+}
+
+/** When an exam box is clicked:
+ *  - fetch JSON/archived/[examId].json
+ *  - parse array of stored attempts (SheetDB rows style)
+ *  - filter by unique-identifier === examId
+ *  - trim last 10 chars of display-name to match localStorage displayName
+ *  - show attempts (for current user) and also an option to view all users
+ */
+async function onSelectExam(examId){
+  selectedPanel.innerHTML = '<div class="panel">Loading attempts…</div>';
+  try {
+    const res = await fetch(`JSON/archived/${examId}.json`, {cache:'no-store'});
+    if(!res.ok) throw new Error('exam archive not found');
+    const allRows = await res.json(); // expected: array of entries like your sample
+
+    // filter rows that belong to this exam (unique-identifier)
+    const rowsForExam = allRows.filter(r => r['unique-identifier'] === examId);
+
+    if(rowsForExam.length === 0){
+      selectedPanel.innerHTML = `<div class="panel"><div class="empty">No attempts found for ${examId}.</div></div>`;
+      return;
+    }
+
+    // parse each row.json robustly
+    const parsedRows = rowsForExam.map(r => {
+      const parsed = robustParseJsonField(r.json);
+      // keep original row metadata (display-name etc) as well
+      return { raw: r, parsed };
+    });
+
+    // separate current-user attempts
+    const currentUser = localStorage.getItem('displayName');
+    const currentTrim = currentUser ? currentUser : null;
+
+    let userAttempts = [];
+    if(currentTrim){
+      userAttempts = parsedRows.filter(p => {
+        // r['display-name'] looks like username + 10-rand
+        const rawDN = p.raw['display-name'] || (p.parsed && p.parsed.displayName) || '';
+        if(!rawDN) return false;
+        // trim last 10 chars (if present)
+        const base = rawDN.length > 10 ? rawDN.slice(0, -10) : rawDN;
+        return base === currentTrim;
+      });
+    }
+
+    // sort attempts by some heuristic (if parsed has timestamp or shorter time -> recent)
+    // we'll just keep order as in file (SheetDB likely returns chronological)
+    // Build UI
+    buildAttemptsPanel(examId, parsedRows, userAttempts);
+
+  } catch(e){
+    console.error(e);
+    selectedPanel.innerHTML = `<div class="panel"><div class="empty">Failed to load attempts for ${examId}.</div></div>`;
+  }
+}
+
+/** create attempts UI: show current user's attempts (if any) + a list of all attempts (toggleable)
+ */
+function buildAttemptsPanel(examId, allParsedRows, userAttempts){
+  const panel = document.createElement('div');
+  panel.className = 'panel';
+
+  // header
+  const title = document.createElement('div');
+  title.style.display = 'flex';
+  title.style.alignItems = 'center';
+  title.style.justifyContent = 'space-between';
+  title.innerHTML = `<div style="font-weight:800">Attempts for ${examId}</div>`;
+
+  panel.appendChild(title);
+
+  // show user attempts section
+  const userSection = document.createElement('div');
+  userSection.style.marginTop = '12px';
+
+  if(userAttempts.length === 0){
+    userSection.innerHTML = `<div class="muted">No attempts found for the current user.</div>`;
+  } else {
+    const heading = document.createElement('div');
+    heading.style.fontWeight = '700';
+    heading.style.marginBottom = '8px';
+    heading.textContent = `Your attempts (${userAttempts.length})`;
+    userSection.appendChild(heading);
+
+    const list = document.createElement('div');
+    list.className = 'attempts-list';
+
+    userAttempts.forEach((p, i) => {
+      const parsed = p.parsed || {};
+      const raw = p.raw || {};
+      const attemptBtn = document.createElement('div');
+      attemptBtn.className = 'attempt';
+      attemptBtn.textContent = `Attempt ${i+1}`;
+      // show small meta: score if available
+      const metaSmall = document.createElement('div');
+      metaSmall.className = 'muted';
+      let scoreStr = '';
+      if(typeof parsed.correct === 'number' && typeof parsed.incorrect === 'number' && typeof parsed.notAttempted === 'number'){
+        scoreStr = ` • C:${parsed.correct} I:${parsed.incorrect} NA:${parsed.notAttempted}`;
+      }
+      metaSmall.style.marginTop = '6px';
+      metaSmall.style.fontSize = '12px';
+      metaSmall.textContent = scoreStr;
+      const wrapper = document.createElement('div');
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.alignItems = 'flex-start';
+      wrapper.appendChild(attemptBtn);
+      wrapper.appendChild(metaSmall);
+
+      attemptBtn.addEventListener('click', ()=>{
+        openResultFromParsed(parsed);
+      });
+
+      list.appendChild(wrapper);
+    });
+
+    userSection.appendChild(list);
+  }
+
+  panel.appendChild(userSection);
+
+  // divider
+  const hr = document.createElement('div');
+  hr.style.height = '1px';
+  hr.style.background = 'rgba(0,0,0,0.04)';
+  hr.style.margin = '14px 0';
+  panel.appendChild(hr);
+
+  // all attempts section (toggleable)
+  const allSection = document.createElement('div');
+  const headingAll = document.createElement('div');
+  headingAll.style.fontWeight = '700';
+  headingAll.style.marginBottom = '8px';
+  headingAll.textContent = `All attempts (${allParsedRows.length})`;
+  allSection.appendChild(headingAll);
+
+  const allList = document.createElement('div');
+  allList.className = 'attempts-list';
+
+  allParsedRows.forEach((p, i) => {
+    const parsed = p.parsed || {};
+    const raw = p.raw || {};
+    const displayNameRaw = raw['display-name'] || (parsed && parsed.displayName) || 'unknown';
+    const suffix = displayNameRaw.slice(-10);
+    const label = document.createElement('div');
+    label.className = 'attempt';
+    label.textContent = `${i+1} • ${ (parsed && parsed.displayName) ? parsed.displayName : displayNameRaw }`;
+    const meta = document.createElement('div');
+    meta.className = 'muted';
+    meta.style.fontSize = '12px';
+    if(parsed && typeof parsed.correct === 'number'){
+      meta.textContent = `C:${parsed.correct} I:${parsed.incorrect} NA:${parsed.notAttempted}`;
+    } else meta.textContent = `id:${suffix}`;
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.flexDirection = 'column';
+    wrapper.style.alignItems = 'flex-start';
+    wrapper.appendChild(label);
+    wrapper.appendChild(meta);
+
+    label.addEventListener('click', ()=>{
+      openResultFromParsed(parsed);
+    });
+
+    allList.appendChild(wrapper);
+  });
+
+  allSection.appendChild(allList);
+  panel.appendChild(allSection);
+
+  // helper hint
+  const hint = document.createElement('div');
+  hint.className = 'hint';
+  hint.textContent = 'Select an attempt to open the result viewer. The viewer reconstructs the statuses and calculates marks.';
+  panel.appendChild(hint);
+
+  // append to DOM
+  selectedPanel.innerHTML = '';
+  selectedPanel.appendChild(panel);
+}
+
+/** Given a parsed attempt object (the submission object),
+ *  construct statuses and navigate to result.html
+ */
+function openResultFromParsed(parsed){
+  if(!parsed || !parsed.questions || !Array.isArray(parsed.questions)){
+    alert('This attempt has malformed question data.');
+    return;
+  }
+
+  const statuses = parsed.questions.map(q => q.status || 'notAttempted');
+  const sessionId = parsed.session || parsed.sessionId || parsed.uniqueIdentifier || localStorage.getItem('selectedSession') || '';
+
+  // build final URL
+  const url = `result.html?sessionId=${encodeURIComponent(sessionId)}&statuses=${encodeURIComponent(statuses.join(','))}`;
+
+  // also set selectedSession in localStorage (result page uses it to fetch marking scheme)
+  localStorage.setItem('selectedSession', sessionId);
+
+  // navigate
+  window.location.href = url;
+}
+
+/* UI controls */
+showAllBtn.addEventListener('click', ()=>{
+  showAllUsers = !showAllUsers;
+  showAllBtn.textContent = showAllUsers ? 'Showing all' : 'Show all users';
+  // visually no immediate effect — onSelectExam shows both lists anyway
+});
+
+refreshBtn.addEventListener('click', ()=> loadIndex());
+
+/* initialize */
+loadIndex();
+
+</script>
+</body>
+</html>
