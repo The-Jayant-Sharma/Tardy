@@ -345,8 +345,8 @@ window.addEventListener('touchmove', (e)=>{
    Local-only Result Loading
    --------------------------- */
 
-function loadLocalResult() {
-    let saved = localStorage.getItem("last_exam_submission");
+async function loadLocalResult() {
+    const saved = localStorage.getItem("last_exam_submission");
     if (!saved) {
         alert("No saved exam data found.");
         return;
@@ -361,10 +361,28 @@ function loadLocalResult() {
         return;
     }
 
-    // marks already stored inside the saved exam object
-    const weight = result.marks_full;
-    const negative = result.marks_negative;
-    const nullMark = result.marks_null;
+    /* ---------------------------
+       FETCH MARKING SCHEME
+       --------------------------- */
+    const selectedSession = localStorage.getItem("selectedSession");
+    if (!selectedSession) {
+        alert("No session ID found.");
+        return;
+    }
+
+    let marksData;
+    try {
+        const res = await fetch(`JSON/tests/${selectedSession}.json`);
+        marksData = await res.json();
+    } catch (e) {
+        console.error(e);
+        alert("Could not load marking scheme.");
+        return;
+    }
+
+    const weight   = marksData.marks.full;
+    const negative = marksData.marks.negative;
+    const nullMark = marksData.marks.null;
 
     renderResult(result, weight, negative, nullMark);
 }
