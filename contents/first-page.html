@@ -146,6 +146,21 @@
     .take-test-btn:hover {
       background: #333333;
     }
+
+    /* Archived link styling */
+    .archive-link {
+      display: block;
+      text-align: center;
+      color: #007bff;
+      font-weight: 600;
+      margin: 25px 0;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: 0.25s;
+    }
+    .archive-link:hover {
+      color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -158,6 +173,9 @@
   <div class="header">Tardy</div>
 
   <div id="greet" class="subheading" style="margin-top:20px; font-size:22px; font-weight:500;"></div>
+
+  <!-- New Archive Link -->
+  <div class="archive-link" id="archiveLink">Looking for the marks Archive?</div>
 
   <div class="subheading">Active Sessions</div>
 
@@ -304,6 +322,14 @@
   }
 
   loadName();
+
+  // =========================
+  // ARCHIVE LINK CLICK
+  // =========================
+  document.getElementById("archiveLink").addEventListener("click", () => {
+    window.location.href = "/archived.html";
+  });
+
 </script>
 
 </body>
