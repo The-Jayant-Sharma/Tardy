@@ -366,7 +366,7 @@ function renderIndex(){
 async function onSelectExam(examId){
   selectedPanel.innerHTML = '<div class="panel">Loading attempts…</div>';
   try {
-    const res = await fetch(`JSON/archived/${examId}.json`, {cache:'no-store'});
+    const res = await fetch(`JSON/archive/${examId}.json`, {cache:'no-store'});
     if(!res.ok) throw new Error('exam archive not found');
     const allRows = await res.json(); // expected: array of entries like your sample
 
