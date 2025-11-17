@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,56 +12,80 @@
       background: #0d0d0d;
       color: #fff;
       overflow-x: hidden;
-    }#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
+    }
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
 
-.card {
-  background: rgba(255, 255, 255, 0.08);
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
 
-.question {
-  padding: 16px;
-  margin-bottom: 16px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-}
+    .question {
+      padding: 16px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
 
-.correct {
-  color: #4cf596;
-}
+    .correct { color: #4cf596; }
+    .incorrect { color: #ff6b6b; }
+    .notAttempted { color: #cccccc; }
 
-.incorrect {
-  color: #ff6b6b;
-}
+    /* Drawer Animation */
+    .drawer {
+      margin-top: 8px;
+      padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      font-size: 14px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    .drawer.open {
+      max-height: 200px; /* Adjust if necessary */
+      padding: 12px;
+      opacity: 1;
+    }
 
-.notAttempted {
-  color: #cccccc;
-}
-
+    .summary-card {
+      background: rgba(255,255,255,0.08);
+      padding: 16px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body>
-  <canvas id="particles"></canvas>  <div class="container">
+  <canvas id="particles"></canvas>
+  <div class="container">
     <h1>Archived Result</h1>
     <div id="resultContainer" class="card">Loading...</div>
-  </div>  <script>
+  </div>
+
+  <script>
     // PARTICLE BACKGROUND
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
@@ -105,10 +130,21 @@
     }
     animateParticles();
 
+    // =========================
+    // ARCHIVED RESULT DISPLAY
+    // =========================
 
-    // =========================
-    // LOAD ARCHIVED ATTEMPT
-    // =========================
+    function formatTime(seconds) {
+      if(seconds < 60) return `${seconds}s`;
+      const m = Math.floor(seconds/60);
+      const s = seconds % 60;
+      return `${m}m ${s}s`;
+    }
+
+    function optionLetter(idx){
+      const letters = ['A','B','C','D'];
+      return idx != null ? letters[idx] : '—';
+    }
 
     const saved = localStorage.getItem("archived_view_attempt");
     const resultBox = document.getElementById("resultContainer");
@@ -117,62 +153,61 @@
       resultBox.innerHTML = "No archived attempt found.";
     } else {
       const data = JSON.parse(saved);
-
       const sessionId = data.sessionId;
       const statuses = data.statuses;
       const fullData = data.fullData;
 
-      // Fetch marking scheme JSON
       fetch(`JSON/tests/${sessionId}.json`)
         .then(res => res.json())
         .then(testJson => {
           const marking = testJson.marks;
 
-          let html = `<h2>Session: ${sessionId}</h2>`;
-          html += `<p>Total Questions: ${statuses.length}</p>`;
+          // Summary
+          let totalMarks = 0, correctCount=0, incorrectCount=0, notAttemptedCount=0;
+          const fullMarkPerQuestion = marking.full;
+          const maxMarks = fullMarkPerQuestion * fullData.questions.length;
 
-          html += `<h3>Questions</h3>`;
+          fullData.questions.forEach(q=>{
+            if(q.status==='correct'){ totalMarks += marking.full; correctCount++;}
+            else if(q.status==='incorrect'){ totalMarks += marking.negative; incorrectCount++;}
+            else{ totalMarks += marking.null; notAttemptedCount++;}
+          });
 
-          statuses.forEach((st, i) => {
-            let markText = '';
+          let html = `<div class="summary-card">
+                        <h2>Session: ${sessionId}</h2>
+                        <p>Total Questions: ${statuses.length}</p>
+                        <p>Total Marks: ${totalMarks} / ${maxMarks}</p>
+                        <p>correct: ${correctCount} &nbsp;  Incorrect: ${incorrectCount} &nbsp; ️ Not Attempted: ${notAttemptedCount}</p>
+                      </div>
+                      <h3>Questions</h3>`;
 
-            if (st === 'notAttempted') markText = marking.null;
-            if (st === 'correct') markText = marking.full;
-            if (st === 'incorrect') markText = marking.negative;
-
-            html += `
-              <div class="question">
-                <h4>Q${i + 1} <span class="${st}">${st}</span></h4>
-                <p>Marks: ${markText}</p>
-              </div>
-            `;
+          fullData.questions.forEach((q,i)=>{
+            let markText = (q.status==='correct') ? marking.full : (q.status==='incorrect') ? marking.negative : marking.null;
+            html += `<div class="question" data-index="${i}">
+                        <h4>Q${i+1} <span class="${q.status}">${q.status}</span></h4>
+                        <p>Marks: ${markText}</p>
+                        <div class="drawer">
+                          <p>Selected: ${optionLetter(q.selected)}</p>
+                          <p>Correct: ${optionLetter(q.correctAnswer)}</p>
+                          <p>Time Spent: ${formatTime(q.timeSpent)}</p>
+                        </div>
+                     </div>`;
           });
 
           resultBox.innerHTML = html;
+
+          // Drawer toggle with animation
+          document.querySelectorAll('.question').forEach(qel=>{
+            const drawer = qel.querySelector('.drawer');
+            qel.addEventListener('click', ()=> {
+              drawer.classList.toggle('open');
+            });
+          });
         })
         .catch(err => {
           resultBox.innerHTML = "Failed to load marking scheme.";
         });
     }
-    // Fetch marking scheme from JSON/tests/(examId).json
-  async function fetchMarkingScheme(examId) {
-    try {
-      const response = await fetch(`JSON/tests/${examId}.json`);
-      const data = await response.json();
-      return data.marks;
-    } catch (err) {
-      console.error('Failed to load marking scheme:', err);
-      return { full: 4, negative: -1, null: 0 };
-    }
-  }
-
-  async function initMarking(){
-    const examId = archived.examId || archived.sessionId;
-    markingScheme = await fetchMarkingScheme(examId);
-    calculateTotal();
-    renderDetails();
-  }
-
-  initMarking();
-</script></body>
+  </script>
+</body>
 </html>
