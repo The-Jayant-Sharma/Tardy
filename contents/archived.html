@@ -564,7 +564,7 @@ function openResultFromParsed(parsed){
 
   // Build URL-only navigation (archive-mode)
   const url =
-    `result.html?sessionId=${encodeURIComponent(sessionId)}&statuses=${encodeURIComponent(statuses.join(','))}`;
+    `archived-result.html?sessionId=${encodeURIComponent(sessionId)}&statuses=${encodeURIComponent(statuses.join(','))}`;
 
   window.location.href = url;
 }
