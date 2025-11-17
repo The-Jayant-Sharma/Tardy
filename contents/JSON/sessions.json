@@ -11,5 +11,15 @@
       "start": "November 17, 2025",
       "end": "November 19, 2025"
     }
+    {
+      "id": "uga-s-01",
+      "title": "UGA S-Test 1",
+      "description": "This test evaluates your understanding of fundamental concepts in mathematical logic, including truth tables, set theory operations, logical equivalences, functions, and related problem-solving skills. The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
+      "total_questions": 30,
+      "start-date": "17-11-2025",
+      "end-date": "20-11-2025",
+      "start": "November 17, 2025",
+      "end": "November 20, 2025"
+    }
   ]
 }
