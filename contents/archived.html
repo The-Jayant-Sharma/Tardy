@@ -550,23 +550,30 @@ function openResultFromParsed(parsed){
   // Build statuses array
   const statuses = parsed.questions.map(q => q.status || 'notAttempted');
 
-  // Extract correct session
   const sessionId = parsed.session || '';
 
   /* ============================================
-     CRITICAL: archive mode must NOT use or set
-               last_exam_submission at all.
-               First we wipe old live-exam data.
+     ARCHIVE MODE — SAVE ATTEMPT FOR VIEWER
      ============================================ */
+  const payload = {
+    sessionId,
+    statuses,
+    fullData: parsed
+  };
+
+  // Save only for viewer; does NOT interfere with live exam data
+  localStorage.setItem(
+    'archived_view_attempt',
+    JSON.stringify(payload)
+  );
+
+  // Clear any possible leftover live-exam keys
   localStorage.removeItem('last_exam_submission');
   localStorage.removeItem('last_exam_submission_v2');
   localStorage.removeItem('selectedSession');
 
-  // Build URL-only navigation (archive-mode)
-  const url =
-    `archived-result.html?sessionId=${encodeURIComponent(sessionId)}&statuses=${encodeURIComponent(statuses.join(','))}`;
-
-  window.location.href = url;
+  // Navigate WITHOUT URL params
+  window.location.href = 'archived-result.html';
 }
 
 /* UI controls */
