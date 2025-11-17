@@ -11,25 +11,25 @@
   "questions": [
     {
       "id": "q1",
-      "question": "Let $A = \\{1,2,3\\}$ and $B = \\{2,3,4\\}$. Find $A \\cup B$.",
-      "options": ["\\{1,2,3,4,5\\}", "\\{1,2,3,4\\}", "\\{2,3\\}", "\\{1,4\\}"],
+      "question": "Let $$A = \\{1,2,3\\}$$ and $$B = \\{2,3,4\\}.$$ Find $$A \\cup B.$$",
+      "options": ["$$\\{1,2,3,4,5\\}$$", "$$\\{1,2,3,4\\}$$", "$$\\{2,3\\}$$", "$$\\{1,4\\}$$"],
       "answer": 1
     },
     {
       "id": "q2",
-      "question": "Identify the set: $A = \\{x \\mid x \\text{ is a prime number less than } 10\\}$. ",
-      "options": ["\\{2,3,5,7\\}", "\\{1,2,3,5\\}", "\\{2,3,4,7\\}", "\\{3,5,7,9\\}"],
+      "question": "Identify the set: $$A = \\{x \\mid x \\text{ is a prime number less than } 10\\}.$$",
+      "options": ["$$\\{2,3,5,7\\}$$", "$$\\{1,2,3,5\\}$$", "$$\\{2,3,4,7\\}$$", "$$\\{3,5,7,9\\}$$"],
       "answer": 0
     },
     {
       "id": "q3",
-      "question": "If $A = \\{a,b,c\\}$ and $B = \\{b,c,d\\}$, then $A \\cap B$ equals:",
-      "options": ["\\{a,b,c\\}", "\\{b,c\\}", "\\{c,d\\}", "\\{a,d\\}"],
+      "question": "If $$A = \\{a,b,c\\}$$ and $$B = \\{b,c,d\\},$$ then $$A \\cap B$$ equals:",
+      "options": ["$$\\{a,b,c\\}$$", "$$\\{b,c\\}$$", "$$\\{c,d\\}$$", "$$\\{a,d\\}$$"],
       "answer": 1
     },
     {
       "id": "q4",
-      "question": "The power set of \\{1,2\\} has:",
+      "question": "The power set of $$\\{1,2\\}$$ has:",
       "options": ["2 elements", "3 elements", "4 elements", "8 elements"],
       "answer": 2
     },
@@ -41,62 +41,62 @@
     },
     {
       "id": "q6",
-      "question": "For a set $A$ with $n$ elements, the number of proper subsets is:",
-      "options": ["$2^n$", "$2^n - 1$", "$n - 1$", "$n$"],
+      "question": "For a set $$A$$ with $$n$$ elements, the number of proper subsets is:",
+      "options": ["$$2^n$$", "$$2^n - 1$$", "$$n - 1$$", "$$n$$"],
       "answer": 1
     },
     {
       "id": "q7",
-      "question": "If $n(A)=20$, $n(B)=28$, and $n(A\\cup B)=40$, then $n(A\\cap B)$ is:",
+      "question": "If $$n(A)=20$$, $$n(B)=28$$, and $$n(A \\cup B)=40$$, then $$n(A \\cap B)$$ is:",
       "options": ["8", "12", "48", "20"],
       "answer": 0
     },
     {
       "id": "q8",
-      "question": "Find the complement of $A = \\{1,3,5\\}$ in the universal set $U=\\{1,2,3,4,5,6\\}$. ",
-      "options": ["\\{1,3,5\\}", "\\{2,4,6\\}", "\\{1,2,3\\}", "\\{4,5,6\\}"],
+      "question": "Find the complement of $$A = \\{1,3,5\\}$$ in the universal set $$U = \\{1,2,3,4,5,6\\}.$$",
+      "options": ["$$\\{1,3,5\\}$$", "$$\\{2,4,6\\}$$", "$$\\{1,2,3\\}$$", "$$\\{4,5,6\\}$$"],
       "answer": 1
     },
     {
       "id": "q9",
-      "question": "If $A = \\{1,2,3\\}$, $B = \\{2,4\\}$, find $A - B$.",
-      "options": ["\\{1,3\\}", "\\{2\\}", "\\{1,2\\}", "\\{3,4\\}"],
+      "question": "If $$A = \\{1,2,3\\}$$ and $$B = \\{2,4\\},$$ find $$A - B.$$",
+      "options": ["$$\\{1,3\\}$$", "$$\\{2\\}$$", "$$\\{1,2\\}$$", "$$\\{3,4\\}$$"],
       "answer": 0
     },
     {
       "id": "q10",
-      "question": "$A \\Delta B$ represents:",
-      "options": ["$A \\cup B$", "$(A - B) \\cup (B - A)$", "$A \\cap B$", "$(A \\cup B)'$"],
+      "question": "$$A \\Delta B$$ represents:",
+      "options": ["$$A \\cup B$$", "$$(A - B) \\cup (B - A)$$", "$$A \\cap B$$", "$$(A \\cup B)'$$"],
       "answer": 1
     },
     {
       "id": "q11",
-      "question": "Choose the logically equivalent statement to $\\neg (p \\land q)$. ",
-      "options": ["$\\neg p \\lor \\neg q$", "$\\neg p \\land \\neg q$", "$p \\lor q$", "$p \\rightarrow q$"],
+      "question": "Choose the logically equivalent statement to $$\\neg(p \\land q).$$",
+      "options": ["$$\\neg p \\lor \\neg q$$", "$$\\neg p \\land \\neg q$$", "$$p \\lor q$$", "$$p \\rightarrow q$$"],
       "answer": 0
     },
     {
       "id": "q12",
-      "question": "Truth value of $(p \\lor q)$ when $p = \\text{False}$ and $q = \\text{True}$: ",
+      "question": "Truth value of $$(p \\lor q)$$ when $$p = \\text{False}$$ and $$q = \\text{True}$$:",
       "options": ["True", "False", "Both", "Neither"],
       "answer": 0
     },
     {
       "id": "q13",
       "question": "A tautology is a statement that is:",
-      "options": ["Always true", "Always false", "Sometimes true", "True only when $p$ is true"],
+      "options": ["Always true", "Always false", "Sometimes true", "True only when $$p$$ is true"],
       "answer": 0
     },
     {
       "id": "q14",
-      "question": "The contrapositive of $(p \\rightarrow q)$ is:",
-      "options": ["$q \\rightarrow p$", "$\\neg p \\rightarrow \\neg q$", "$\\neg q \\rightarrow \\neg p$", "$p \\rightarrow \\neg q$"],
+      "question": "The contrapositive of $$(p \\rightarrow q)$$ is:",
+      "options": ["$$q \\rightarrow p$$", "$$\\neg p \\rightarrow \\neg q$$", "$$\\neg q \\rightarrow \\neg p$$", "$$p \\rightarrow \\neg q$$"],
       "answer": 2
     },
     {
       "id": "q15",
-      "question": "The converse of $(p \\rightarrow q)$ is:",
-      "options": ["$q \\rightarrow p$", "$\\neg q \\rightarrow \\neg p$", "$\\neg p \\rightarrow q$", "$p \\land q$"],
+      "question": "The converse of $$(p \\rightarrow q)$$ is:",
+      "options": ["$$q \\rightarrow p$$", "$$\\neg q \\rightarrow \\neg p$$", "$$\\neg p \\rightarrow q$$", "$$p \\land q$$"],
       "answer": 0
     },
     {
@@ -107,88 +107,87 @@
     },
     {
       "id": "q17",
-      "question": "Truth value of $(p \\rightarrow q)$ when $p$ is false: ",
-      "options": ["Always true", "Always false", "Depends on $q$", "Both"],
+      "question": "Truth value of $$(p \\rightarrow q)$$ when $$p$$ is false:",
+      "options": ["Always true", "Always false", "Depends on $$q$$", "Both"],
       "answer": 0
     },
     {
       "id": "q18",
-      "question": "Let $A=\\{1,2,3\\}$ and $B=\\{3,4,5\\}$. Compute $(A\\cup B) - (A\\cap B)$. ",
-      "options": ["\\{1,2,4,5\\}", "\\{3\\}", "\\{1,5\\}", "\\{1,2,3\\}"],
+      "question": "Let $$A = \\{1,2,3\\}$$ and $$B = \\{3,4,5\\}.$$ Compute $$(A \\cup B) - (A \\cap B).$$",
+      "options": ["$$\\{1,2,4,5\\}$$", "$$\\{3\\}$$", "$$\\{1,5\\}$$", "$$\\{1,2,3\\}$$"],
       "answer": 0
     },
     {
       "id": "q19",
-      "question": "If $A=\\{1,2,3,4\\}$, $B=\\{2,3\\}$, and $C=\\{3,4,5\\}$, find $(A-B)\\cap C$. ",
-      "options": ["\\{3,4\\}", "\\{4\\}", "\\{3\\}", "\\{1,4\\}"],
+      "question": "If $$A=\\{1,2,3,4\\}$$, $$B=\\{2,3\\}$$, and $$C=\\{3,4,5\\}$$, find $$(A-B) \\cap C.$$",
+      "options": ["$$\\{3,4\\}$$", "$$\\{4\\}$$", "$$\\{3\\}$$", "$$\\{1,4\\}$$"],
       "answer": 1
     },
     {
       "id": "q20",
-      "question": "Determine whether the following is a function: $\\{(1,2),(1,3),(2,4)\\}$ ",
+      "question": "Determine whether the following is a function: $$\\{(1,2),(1,3),(2,4)\\}$$",
       "options": ["Yes", "No", "Sometimes", "Cannot be determined"],
       "answer": 1
     },
     {
       "id": "q21",
-      "question": "Domain of $f(x)=\\sqrt{x-1}$. ",
-      "options": ["$x\\ge 1$", "$x>0$", "$x\\le 1$", "$x<1$"],
+      "question": "Domain of $$f(x)=\\sqrt{x-1}$$:",
+      "options": ["$$x \\ge 1$$", "$$x>0$$", "$$x \\le 1$$", "$$x<1$$"],
       "answer": 0
     },
     {
       "id": "q22",
-      "question": "Range of $f(x)=x^2$ for all real numbers. ",
-      "options": ["$\\mathbb{R}$", "$[0,\\infty)$", "$(-\\infty,0]$", "$(0,\\infty)$"],
+      "question": "Range of $$f(x)=x^2$$ for all real numbers:",
+      "options": ["$$\\mathbb{R}$$", "$$[0,\\infty)$$", "$$(-\\infty,0]$$", "$$(0,\\infty)$$"],
       "answer": 1
     },
     {
       "id": "q23",
-      "question": "If $f(x)=2x+3$, find $f(2)$. ",
+      "question": "If $$f(x)=2x+3$$, find $$f(2).$$",
       "options": ["7", "5", "3", "8"],
       "answer": 0
     },
     {
       "id": "q24",
-      "question": "If $f(x)=x^2-4$ and $g(x)=x+2$, find $(f\\circ g)(1)$. ",
+      "question": "If $$f(x)=x^2-4$$ and $$g(x)=x+2$$, find $$(f \\circ g)(1).$$",
       "options": ["1", "5", "9", "0"],
       "answer": 1
     },
     {
       "id": "q25",
-      "question": "The inverse of $f(x)=x+5$ is:",
-      "options": ["$f^{-1}(x)=x-5$", "$f^{-1}(x)=x+5$", "$f^{-1}(x)=5-x$", "$f^{-1}(x)=\\frac{1}{x}-5$"],
+      "question": "The inverse of $$f(x)=x+5$$ is:",
+      "options": ["$$f^{-1}(x)=x-5$$", "$$f^{-1}(x)=x+5$$", "$$f^{-1}(x)=5-x$$", "$$f^{-1}(x)=\\frac{1}{x}-5$$"],
       "answer": 0
     },
     {
       "id": "q26",
-      "question": "Determine if $f(x)=|x|$ is one-to-one. ",
-      "options": ["Yes", "No", "Depends on $x$", "None"],
+      "question": "Determine if $$f(x)=|x|$$ is one-to-one.",
+      "options": ["Yes", "No", "Depends on $$x$$", "None"],
       "answer": 1
     },
     {
       "id": "q27",
-      "question": "If $f(x)=3x-1$, find $f^{-1}(2)$. ",
-      "options": ["1", "2", "3", "$\\frac{1}{3}$"],
+      "question": "If $$f(x)=3x-1$$, find $$f^{-1}(2).$$",
+      "options": ["1", "2", "3", "$$\\tfrac{1}{3}$$"],
       "answer": 0
     },
     {
       "id": "q28",
-      "question": "Find $A\\Delta B$ for $A=\\{1,2,3\\}$ and $B=\\{3,4\\}$. (Here, $\\Delta$ denotes symmetric difference and $A-B$ denotes the set difference.) ",
-      "options": ["\\{1,2,4\\}", "\\{3\\}", "\\{1,4\\}", "\\{1,2,3,4\\}"],
+      "question": "Find $$A \\Delta B$$ for $$A=\\{1,2,3\\}$$ and $$B=\\{3,4\\}$$.",
+      "options": ["$$\\{1,2,4\\}$$", "$$\\{3\\}$$", "$$\\{1,4\\}$$", "$$\\{1,2,3,4\\}$$"],
       "answer": 0
     },
     {
       "id": "q29",
-      "question": "If $A=\\{1,2\\}$ and $B=\\{2,3\\}$, compute $(A\\Delta B)\\cap A$. ",
-      "options": ["\\{1\\}", "\\{2\\}", "\\{1,2\\}", "\\{3\\}"],
+      "question": "If $$A=\\{1,2\\}$$ and $$B=\\{2,3\\}$$, compute $$(A \\Delta B) \\cap A.$$",
+      "options": ["$$\\{1\\}$$", "$$\\{2\\}$$", "$$\\{1,2\\}$$", "$$\\{3\\}$$"],
       "answer": 0
     },
     {
       "id": "q30",
-      "question": "Let $A=\\{2,4,6\\}$ and $B=\\{4,5,6\\}$. Find $(A-B)\\cup (B-A)$. ",
-      "options": ["\\{2,5\\}", "\\{4\\}", "\\{6\\}", "\\{2,4,5,6\\}"],
+      "question": "Let $$A=\\{2,4,6\\}$$ and $$B=\\{4,5,6\\}$$. Find $$(A-B) \\cup (B-A).$$",
+      "options": ["$$\\{2,5\\}$$", "$$\\{4\\}$$", "$$\\{6\\}$$", "$$\\{2,4,5,6\\}$$"],
       "answer": 0
     }
- 
   ]
 }
