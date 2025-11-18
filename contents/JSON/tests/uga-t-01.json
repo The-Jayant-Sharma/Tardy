@@ -186,7 +186,7 @@
       "id": "q24",
       "question": "$$\\text{Packets contain }A,B,C.\\newline5A+3B+7C=24.50,\\;2A+3B+3C=17.00.\\newline\\text{Find cost of }16A+9B+23C.$$",
       "options": ["$$55.00$$", "$$75.50$$", "$$100.00$$", "$$\\text{Cannot determine}$$"],
-      "answer": 0
+      "answer": 2
     },
     {
       "id": "q25",
