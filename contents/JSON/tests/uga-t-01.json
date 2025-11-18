@@ -140,7 +140,7 @@
       "id": "q18",
       "question": "$$\\text{A student took 5 papers with marks proportional to }2:3:4:5:6.\\newline\\text{He obtained }\\tfrac{3}{5}\\text{ of total full marks.}\\newline\\text{Number of papers with }{>}50\\%\\text{ marks is:}$$",
       "options": ["$$2$$", "$$3$$", "$$4$$", "$$5$$"],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": "q19",
@@ -157,7 +157,7 @@
       "id": "q20",
       "question": "$$a+7b+3c+5d=0\\newline8a+6b+c+2d=-16\\newline2a+5b+4c+8d=-16\\newline5a+3b+7c+d=-16\\newline\\text{Find }(a+d)(b+c).$$",
       "options": ["$$16$$", "$$-16$$", "$$0$$", "$$\\text{None}$$"],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": "q21",
@@ -180,7 +180,7 @@
         "$$1{:}05\\text{ and }1{:}06$$",
         "$$1{:}06\\text{ and }1{:}07$$"
       ],
-      "answer": 3
+      "answer": 2
     },
     {
       "id": "q24",
@@ -241,7 +241,7 @@
         "$$(X \\triangle Y) \\cup (Y \\triangle Z) \\cup (Z \\triangle X)$$",
         "$$\\text{not necessarily any of (A)–(C)}$$"
       ],
-      "answer": 3
+      "answer": 1
     },
     {
       "id": "q30",
