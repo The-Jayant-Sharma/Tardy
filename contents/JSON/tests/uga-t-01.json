@@ -134,7 +134,7 @@
       "id": "q17",
       "question": "$$10\\%\\text{ voters did not vote; 60 blank votes;}\\newline\\text{winner had 47\\% of total voters;}\\newline\\text{won by 308 votes. Find total voters.}$$",
       "options": ["$$3600$$", "$$6200$$", "$$4575$$", "$$6028$$"],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": "q18",
