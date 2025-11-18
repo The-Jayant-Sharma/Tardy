@@ -100,7 +100,7 @@
       "id": "q13",
       "question": "$$\\text{June 10, 1979 was a Sunday.}\\newline\\text{Then May 10, 1972 was:}$$",
       "options": ["$$\\text{Wednesday}$$", "$$\\text{Thursday}$$", "$$\\text{Tuesday}$$", "$$\\text{Friday}$$"],
-      "answer": 3
+      "answer": 0
     },
     {
       "id": "q14",
@@ -111,7 +111,7 @@
         "$$5\\text{ min fast}$$",
         "$$20\\text{ min fast}$$"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": "q15",
