@@ -1,0 +1,248 @@
+{
+  "id": "t-test-02",
+  "title": "T-test-02",
+  "duration": 7200,
+  "total_questions": 30,
+  "marks": {
+    "full": 4,
+    "negative": 0,
+    "null": 1
+  },
+  "questions": [
+    {
+      "id": "q31",
+      "question": "Let $X = \\{1,2,3,\\dots,10\\}$ and $P = \\{1,2,3,4,5\\}$. \nThe number of subsets $Q$ of $X$ such that $P \\Delta Q = \\{3\\}$ is:",
+      "options": ["$2^4 - 1$", "$2^4$", "$2^5$", "$1$"],
+      "answer": 2
+    },
+    {
+      "id": "q32",
+      "question": "For each positive integer $n$ consider the set $P_n = \\{1,2,3,\\dots,n\\}$. \nLet $Q_1 = P_1$, $Q_2 = P_2 \\Delta Q_1 = \\{2\\}$, and in general \n$Q_{n+1} = P_{n+1} \\Delta Q_n$ for $n \\ge 1$. \nThen the number of elements in $Q_{2k}$ is:",
+      "options": ["$1$", "$2k - 2$", "$2k - 3$", "$k$"],
+      "answer": 3
+    },
+    {
+      "id": "q33",
+      "question": "For any two sets $S,T$, $S \\Delta T = (S \\cup T) - (S \\cap T)$. \nLet $A,B,C$ satisfy $A \\cap B \\cap C = \\varnothing$, and each of \n$A \\Delta B$, $B \\Delta C$, $C \\Delta A$ has $100$ elements. \nThen $|A \\cup B \\cup C|$ equals:",
+      "options": ["$150$", "$300$", "$230$", "$210$"],
+      "answer": 0
+    },
+    {
+      "id": "q34",
+      "question": "Let $A,B,C,D$ be finite sets with $|A| < |C|$ and $|B| = |D|$. Then:",
+      "options": [
+        "$|A \\cup B| < |C \\cup D|$",
+        "$|A \\cup B| \\le |C \\cup D|$ but $|A \\cup B| < |C \\cup D|$ need not always hold",
+        "$|A \\cup B| < 2|C \\cup D|$ but $|A \\cup B| \\le |C \\cup D|$ need not always hold",
+        "none of the foregoing is true"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q35",
+      "question": "For subsets $A,B$ of $X$, define \n$A * B = (A \\cap B) \\cup ((X-A) \\cap (X-B))$. \nOnly one of the following is true:",
+      "options": [
+        "$(A * B) - (X-B) = A * B * (X-B)$",
+        "$A * B = A * (X-B)$",
+        "$A * B \\subset A * (X-B)$ and $A * (X-B) \\ne A * B$",
+        "$(X-A) * (X-B) = A * B$"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q36",
+      "question": "Suppose $A,B,C$ satisfy \n$(A-B) \\Delta (B-C) = A \\Delta B$. \nWhich must be true?",
+      "options": ["$A=C$", "$A \\cap B = B \\cap C$", "$A \\cup B = B \\cup C$", "none"],
+      "answer": 1
+    },
+    {
+      "id": "q37",
+      "question": "If $L_1 = \\{\\alpha^n : n \\ge 0\\}$ and $L_2 = \\{\\beta^n : n \\ge 0\\}$, then $L_1 L_2$ equals:",
+      "options": [
+        "$L_1 \\cup L_2$",
+        "all words",
+        "$\\{\\alpha^m \\beta^n : m,n \\ge 0\\}$",
+        "$\\{\\alpha^n \\beta^n : n \\ge 0\\}$"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "q38",
+      "question": "Suppose $L$ contains the empty word and has: if $P \\in L$, then $\\alpha P \\beta \\in L$. \nThe smallest such $L$ is:",
+      "options": [
+        "$\\{\\alpha^n \\beta^m : n,m \\ge 0\\}$",
+        "$\\{\\alpha^n \\beta^n : n \\ge 0\\}$",
+        "$\\{\\alpha^n \\beta^n : n,m \\ge 0\\}$",
+        "all words"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q39",
+      "question": "Suppose $L$ contains empty, $\\alpha$, $\\beta$, and whenever $P,Q \\in L$ then $PQ \\in L$. \nThe smallest such $L$ is:",
+      "options": [
+        "all words",
+        "$\\{\\alpha^n \\beta^m : n \\ge 0\\}$",
+        "words of the form $\\alpha^{n_1} \\beta^{m_1} \\alpha^{n_2} \\beta^{m_2} \\dots \\alpha^{n_k} \\beta^{m_k}$",
+        "none"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "q40",
+      "question": "Define $(x,y) \\leftarrow (z,w)$ if $x<z$ or ($x=z$ and $y>w$). \nIf $(x,y) \\leftarrow (z,w)$ and $(z,w) \\leftarrow (r,s)$, which is always true?",
+      "options": [
+        "$(x,y) \\leftarrow (r,s)$",
+        "$(y,x) \\leftarrow (s,r)$",
+        "$(x,y) \\leftarrow (s,r)$",
+        "$(r,s) \\leftarrow (x,y)$"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q41",
+      "question": "Let $S = \\{m/2^n : m,n \\in \\mathbb{Z}\\}$ and \n$T = \\{p/q : p,q \\in \\mathbb{Z},\\ q\ \text{odd}\\}$. \nWhich is true?",
+      "options": [
+        "neither is a ring",
+        "S is a ring, T is not",
+        "T is a ring, S is not",
+        "both S and T are rings"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q42",
+      "question": "For real $a,b$, define $a^+ = \\max(a,0)$. \nThen $(ab)^+ = a^+ b^+$ iff:",
+      "options": [
+        "both positive",
+        "same sign",
+        "$a=b=0$",
+        "at least one is $\\ge 0$"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q43",
+      "question": "For reals $x,y,z$, only one is correct:",
+      "options": [
+        "$[x+y+z] = [x] + [y] + [z]$",
+        "$\\langle x+y+z \\rangle = \\langle x \\rangle + \\langle y \\rangle + \\langle z \\rangle$",
+        "$[x+y+z] = [x]+[y]+[z] + \\langle x+y \\rangle + \\langle y+z \\rangle + \\langle z+x \\rangle$",
+        "$\\langle x+y+z \\rangle = \\langle x+y \\rangle + \\langle y+z \\rangle + \\langle z+x \\rangle - \\langle x \\rangle - \\langle y \\rangle - \\langle z \\rangle$"
+      ],
+      "answer": 3
+    },
+    {
+      "id": "q44",
+      "question": "Let $x_i = -x_{n-i+1}$. \nConsider $S = \\sum_{i<j<k} x_i x_j x_k$. Then $S$ equals:",
+      "options": ["$n! x_1 \\dots x_n$", "$(n-3)(n-4)$", "$(n-3)(n-4)(n-5)$", "none"],
+      "answer": 3
+    },
+    {
+      "id": "q45",
+      "question": "Let $x = \\sup A$, $y = \\sup B$, and $C = A+B$. If $z = \\sup C$, then:",
+      "options": ["$z > x+y$", "$z < x+y$", "cannot be said", "$z = x+y$"],
+      "answer": 2
+    },
+    {
+      "id": "q46",
+      "question": "Out of $100$ students: $50$ failed Math, $45$ Physics, $40$ Statistics; $32$ failed exactly two; $1$ passed all. \nNumber failing all?",
+      "options": ["12", "cannot determine", "4", "2"],
+      "answer": 2
+    },
+    {
+      "id": "q47",
+      "question": "TV survey: $50\\%$ watch X, $50\\%$ Y, $50\\%$ Z; \n$30\\%$ watch both X,Y; $20\\%$ Y,Z; $30\\%$ X,Z; $10\\%$ none. \n% watching all?",
+      "options": ["90", "50", "10", "20"],
+      "answer": 2
+    },
+    {
+      "id": "q48",
+      "question": "100 families read: IT $42$, Sun $30$, ND $28$; intersections: IT∩Sun $10$, IT∩ND $8$, Sun∩ND $8$, all $3$ = $3$. \nNumber reading none?",
+      "options": ["30", "26", "23", "20"],
+      "answer": 3
+    },
+    {
+      "id": "q49",
+      "question": "Same survey: number reading either both or none of Sunday & India Today?",
+      "options": ["48", "38", "72", "58"],
+      "answer": 0
+    },
+    {
+      "id": "q50",
+      "question": "Village of $1000$: each of P,Q,R read by $500$; \npairs by $250$; all $3$ by $250$. \nNumber reading none?",
+      "options": ["500", "cannot determine", "250", "0"],
+      "answer": 2
+    },
+    {
+      "id": "q51",
+      "question": "60 students: pass I $25$, II $20$, III $8$; \npass at least one of I,II $42$; I&III $30$; II&III $25$; all $3$ = $1$. \nNumber failing all?",
+      "options": ["15", "17", "45", "33"],
+      "answer": 0
+    },
+    {
+      "id": "q52",
+      "question": "A student studies weather for $d$ days: \n(i) rains on $7$ days (morning or afternoon); \n(ii) if it rains in the afternoon, morning is clear; \n(iii) $5$ clear afternoons; \n(iv) $6$ clear mornings. \nThen $d$ equals:",
+      "options": ["7", "11", "10", "9"],
+      "answer": 3
+    },
+    {
+      "id": "q53",
+      "question": "A club with $x$ members has $4$ committees. \nEach member is in exactly $2$ committees; each pair of committees shares exactly one member. Then:",
+      "options": ["$x=4$", "$x=6$", "$x=8$", "cannot determine"],
+      "answer": 1
+    },
+    {
+      "id": "q54",
+      "question": "41 candidates: fail A $12$, G $7$, C $8$; \nfails G,C: $2$; C,A: $3$; A,G: $6$; all $3$: $1$. \n# passing all?",
+      "options": ["24", "2", "14", "cannot determine"],
+      "answer": 0
+    },
+    {
+      "id": "q55",
+      "question": "120 persons: Bengalis $80$, Gujaratis $40$; Muslims $70$, Hindus $50$. \n# Bengali Muslims?",
+      "options": ["30 or more", "exactly 20", "between 15 and 25", "between 20 and 25"],
+      "answer": 0
+    },
+    {
+      "id": "q56",
+      "question": "120 persons: Bengalis $70$, Gujaratis $35$, Maharashtrians $15$; \nMuslims $75$, Hindus $45$. \n# Bengali Muslims?",
+      "options": ["10–14", "15–19", "25 or more", "20"],
+      "answer": 3
+    },
+    {
+      "id": "q57",
+      "question": "4 passengers: 2 lawyers, 2 doctors; 2 Bengali, 2 Hindi; 2 Christian, 2 Muslim. \nNo two same profession share language; no two same religion share profession; \nHindi-speaking doctor is Christian. Which follows?",
+      "options": [
+        "Bengali lawyer is Muslim",
+        "Christian lawyer speaks Bengali",
+        "Bengali doctor is Christian",
+        "Bengali doctor is Hindu"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q58",
+      "question": "Football team plays $60$ games; never loses $3$ in a row; never wins $5$ in a row. \nIf $N$ is number of wins, then:",
+      "options": ["$24 \\le N \\le 50$", "$20 \\le N \\le 48$", "$12 \\le N \\le 40$", "$18 \\le N \\le 42$"],
+      "answer": 1
+    },
+    {
+      "id": "q59",
+      "question": "Box has $100$ balls: R$28$, B$17$, G$21$, W$10$, Y$12$, Bl$12$. \nSmallest $n$ such that any $n$ balls guarantee $\\ge 15$ of some colour?",
+      "options": ["73", "77", "81", "85"],
+      "answer": 1
+    },
+    {
+      "id": "q60",
+      "question": "Positive $x,y,z,w$ satisfy: \n(i) $x>y \\Rightarrow z>w$; \n(ii) $x>z \\Rightarrow y<w$. \nWhich statement is valid?",
+      "options": [
+        "$x<y \\Rightarrow z<w$",
+        "$x<z \\Rightarrow y>w$",
+        "$x>y+z \\Rightarrow z<y$",
+        "$x>y+z \\Rightarrow z>y$"
+      ],
+      "answer": 3
+    }
+  ]
+}
