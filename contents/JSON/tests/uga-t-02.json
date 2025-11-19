@@ -109,7 +109,7 @@
         "T is a ring, S is not",
         "both S and T are rings"
       ],
-      "image": "JSON/tests/images/q11.jpg"
+      "image": "JSON/tests/images/q11.jpg",
       "answer": 3
     },
     {
