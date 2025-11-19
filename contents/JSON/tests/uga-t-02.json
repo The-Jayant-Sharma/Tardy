@@ -42,10 +42,10 @@
       "id": "q35",
       "question": "For subsets $$A,B$$ of $$X$$, define \n$$A * B = (A \\cap B) \\cup ((X-A) \\cap (X-B))$$. \nOnly one of the following is true:",
       "options": [
-        "$$(A * B) - (X-B) = A * B * (X-B)$$",
+        "$$A*(X-B) \\subset A*B$$ \nand \n$$A*(X-B) \\ne A*B$$",
         "$$A * B = A * (X-B)$$",
         "$$A * B \\subset A * (X-B)$$ and $$A * (X-B) \\ne A * B$$",
-        "$$(X-A) * (X-B) = A * B$$"
+        "$$X-(A*B) = A*(X-B)$$"
       ],
       "answer": 3
     },
@@ -60,7 +60,7 @@
       "question": "If $$L_1 = \\{\\alpha^n : n \\ge 0\\}$$ and $$L_2 = \\{\\beta^n : n \\ge 0\\}$$, then $$L_1 L_2$$ equals:",
       "options": [
         "$$L_1 \\cup L_2$$",
-        "all words",
+        "The language consisting of \nall words",
         "$$\\{\\alpha^m \\beta^n : m,n \\ge 0\\}$$",
         "$$\\{\\alpha^n \\beta^n : n \\ge 0\\}$$"
       ],
@@ -73,8 +73,8 @@
       "options": [
         "$$\\{\\alpha^n \\beta^m : n,m \\ge 0\\}$$",
         "$$\\{\\alpha^n \\beta^n : n \\ge 0\\}$$",
-        "$$\\{\\alpha^n \\beta^n : n,m \\ge 0\\}$$",
-        "all words"
+        "$$\\{\\alpha^n \\beta^n : n \\ge 0\\}$$",
+        "The language consisting of \nall possible words"
       ],
       "answer": 3
     },
@@ -84,14 +84,14 @@
       "options": [
         "all words",
         "$$\\{\\alpha^n \\beta^m : n \\ge 0\\}$$",
-        "words of the form $$\\alpha^{n_1} \\beta^{m_1} \\alpha^{n_2} \\beta^{m_2} \\dots \\alpha^{n_k} \\beta^{m_k}$$",
+        "words of the form $$\\alpha^{n_1} \\beta^{m_1} \\alpha^{n_2} \\beta^{m_2} \\dots \\alpha^{n_k} \\beta^{m_k}$$ \nWhere $$k \\in \\mathbb{Z}^+, n_i \\in \\mathbb{Z}, \\geq 0$$",
         "none"
       ],
       "answer": 0
     },
     {
       "id": "q40",
-      "question": "Define $$(x,y) \\leftarrow (z,w)$$ if $$x<z$$ or ($$x=z$$ and $$y>w$$). \nIf $$(x,y) \\leftarrow (z,w)$$ and $$(z,w) \\leftarrow (r,s)$$, which is always true?",
+      "question": "Define $$(x,y) \\leftarrow (z,w)$$ if $$x<z$$ or ($$x=z$$ and $$y>w$$). \n If $$(x,y) \\leftarrow (z,w)$$ and $$(z,w)$$ $$\\leftarrow$$ $$(r,s)$$, which is always true?",
       "options": [
         "$$(x,y) \\leftarrow (r,s)$$",
         "$$(y,x) \\leftarrow (s,r)$$",
@@ -125,12 +125,12 @@
     },
     {
       "id": "q43",
-      "question": "For reals $$x,y,z$$, only one is correct:",
+      "question": "For reals $$x,y,z$$, only one is correct: \n(The notations $$\\langle x \\rangle$$ and \n$$[x]$$ represent the fractional part function and \n the greatest integer function respectively.)",
       "options": [
         "$$[x+y+z] = [x] + [y] + [z]$$",
-        "$$\\langle x+y+z \\rangle = \\langle x \\rangle + \\langle y \\rangle + \\langle z \\rangle$$",
-        "$$[x+y+z] = [x]+[y]+[z] + \\langle x+y \\rangle + \\langle y+z \\rangle + \\langle z+x \\rangle$$",
-        "$$\\langle x+y+z \\rangle = \\langle x+y \\rangle + \\langle y+z \\rangle + \\langle z+x \\rangle - \\langle x \\rangle - \\langle y \\rangle - \\langle z \\rangle$$"
+        "$$\\langle x+y+z \\rangle =$$ \n$$\\langle x \\rangle + \\langle y \\rangle + \\langle z \\rangle$$",
+        "$$[x+y+z] = [x]+[y]+[z]$$ \n$$+ \\langle x+y \\rangle + \\langle y+z \\rangle + \\langle z+x \\rangle$$",
+        "$$\\langle x+y+z \\rangle = \\langle x+y \\rangle$$ \n $$+ \\langle y+z \\rangle + \\langle z+x \\rangle - \\langle x \\rangle -$$ $$\\langle y \\rangle - \\langle z \\rangle$$"
       ],
       "answer": 3
     },
@@ -143,42 +143,42 @@
     {
       "id": "q45",
       "question": "Let $$x = \\sup A$$, $$y = \\sup B$$, and $$C = A+B$$. If $$z = \\sup C$$, then:",
-      "options": ["$$z > x+y$$", "$$z < x+y$$", "cannot be said", "$$z = x+y$$"],
+      "options": ["$$z > x+y$$", "$$z < x+y$$", "$$z = x+y$$", "cannot be said"],
       "answer": 2
     },
     {
       "id": "q46",
       "question": "Out of $$100$$ students: $$50$$ failed Math, $$45$$ Physics, $$40$$ Statistics; $$32$$ failed exactly two; $$1$$ passed all. \nNumber failing all?",
-      "options": ["12", "cannot determine", "4", "2"],
+      "options": ["12", "4", "2", "cannot determine"],
       "answer": 2
     },
     {
       "id": "q47",
-      "question": "TV survey: $$50\\%$$ watch X, $$50\\%$$ Y, $$50\\%$$ Z; \n$$30\\%$$ watch both X,Y; $$20\\%$$ Y,Z; $$30\\%$$ X,Z; $$10\\%$$ none. \n% watching all?",
+      "question": "In a TV survey: $$60\\%$$ watch X, $$50\\%$$ Y, $$50\\%$$ Z; \n$$30\\%$$ watch both X,Y; $$20\\%$$ Y,Z; $$30\\%$$ X,Z; $$10\\%$$ none. \n% watching all?",
       "options": ["90", "50", "10", "20"],
       "answer": 2
     },
     {
       "id": "q48",
-      "question": "100 families read: IT $$42$$, Sun $$30$$, ND $$28$$; intersections: IT∩Sun $$10$$, IT∩ND $$8$$, Sun∩ND $$8$$, all $$3$$ = $$3$$. \nNumber reading none?",
+      "question": "In a survey of 100 families, the reads were found as: IT (India Today) $$42$$, Sunday $$30$$, ND (New delhi) $$28$$; intersections of the readers were found pairwise: IT∩Sun $$10$$, IT∩ND $$8$$, Sun∩ND $$8$$, all $$3$$ = $$3$$. \nNumber reading none?",
       "options": ["30", "26", "23", "20"],
       "answer": 3
     },
     {
       "id": "q49",
-      "question": "Same survey: number reading either both or none of Sunday & India Today?",
+      "question": "In the same survey: number reading either both or none of Sunday & India Today?",
       "options": ["48", "38", "72", "58"],
       "answer": 0
     },
     {
       "id": "q50",
-      "question": "Village of $$1000$$: each of P,Q,R read by $$500$$; \npairs by $$250$$; all $$3$$ by $$250$$. \nNumber reading none?",
+      "question": "In a village of $$1000$$ people: each of P,Q,R read by $$500$$; \n$$P \\cap Q, Q \\cap R, P \\cap R$$ by $$250$$; all $$3$$ by $$250$$. \nNumber reading none?",
       "options": ["500", "cannot determine", "250", "0"],
       "answer": 2
     },
     {
       "id": "q51",
-      "question": "60 students: pass I $$25$$, II $$20$$, III $$8$$; \npass at least one of I,II $$42$$; I&III $$30$$; II&III $$25$$; all $$3$$ = $$1$$. \nNumber failing all?",
+      "question": "60 students appear in a test containing three papers, I, II and III: students passed in I $$25$$; in II $$20$$; and in III $$8$$; \nnumber of students pass at least one of I,II $$42$$; I&III $$30$$; II&III $$25$$; students who passed all three = $$1$$. \nNumber failing all?",
       "options": ["15", "17", "45", "33"],
       "answer": 0
     },
@@ -196,25 +196,25 @@
     },
     {
       "id": "q54",
-      "question": "41 candidates: fail A $$12$$, G $$7$$, C $$8$$; \nfails G,C: $$2$$; C,A: $$3$$; A,G: $$6$$; all $$3$$: $$1$$. \n# passing all?",
+      "question": "Out of 41 candidates: $$12$$ failed A, $$7$$ failed G, and $$8$$ failed C; \nfails G,C: $$2$$; C,A: $$3$$; A,G: $$6$$; and the students to fail all three: $$1$$. \n# passing all?",
       "options": ["24", "2", "14", "cannot determine"],
       "answer": 0
     },
     {
       "id": "q55",
-      "question": "120 persons: Bengalis $$80$$, Gujaratis $$40$$; Muslims $$70$$, Hindus $$50$$. \n# Bengali Muslims?",
+      "question": "Out of 120 persons: Bengalis $$80$$, Gujaratis $$40$$; Muslims $$70$$, Hindus $$50$$. \n# Bengali Muslims?",
       "options": ["30 or more", "exactly 20", "between 15 and 25", "between 20 and 25"],
       "answer": 0
     },
     {
       "id": "q56",
-      "question": "120 persons: Bengalis $$70$$, Gujaratis $$35$$, Maharashtrians $$15$$; \nMuslims $$75$$, Hindus $$45$$. \n# Bengali Muslims?",
+      "question": "Out of 120 persons: Bengalis $$70$$, Gujaratis $$35$$, Maharashtrians $$15$$; \nMuslims $$75$$, Hindus $$45$$. \n# Bengali Muslims?",
       "options": ["10–14", "15–19", "25 or more", "20"],
       "answer": 3
     },
     {
       "id": "q57",
-      "question": "4 passengers: 2 lawyers, 2 doctors; 2 Bengali, 2 Hindi; 2 Christian, 2 Muslim. \nNo two same profession share language; no two same religion share profession; \nHindi-speaking doctor is Christian. Which follows?",
+      "question": "Out of 4 passengers: 2 lawyers, 2 doctors; 2 Bengali, 2 Hindi; 2 Christian, 2 Muslim. \nNo two same profession share language; no two same religion share profession; \nHindi-speaking doctor is Christian. Which follows?",
       "options": [
         "Bengali lawyer is Muslim",
         "Christian lawyer speaks Bengali",
@@ -231,7 +231,7 @@
     },
     {
       "id": "q59",
-      "question": "Box has $$100$$ balls: R$$28$$, B$$17$$, G$$21$$, W$$10$$, Y$$12$$, Bl$$12$$. \nSmallest $$n$$ such that any $$n$$ balls guarantee $$\\ge 15$$ of some colour?",
+      "question": "A box has $$100$$ balls, with letters mentioned on each ball from R, B, G, W, Y, S as: R$$28$$, B$$17$$, G$$21$$, W$$10$$, Y$$12$$, S$$12$$. \nSmallest $$n$$ such that any $$n$$ balls guarantee $$\\ge 15$$ of some letter?",
       "options": ["73", "77", "81", "85"],
       "answer": 1
     },
