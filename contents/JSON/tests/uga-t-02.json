@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "q31",
-      "question": "Please assume $$\\Delta$$ to represebt the symmetric difference between sets, for the entire test, unless stated otherwise. \nLet $$X = \\{1,2,3,\\dots,10\\}$$ and $$P = \\{1,2,3,4,5\\}$$. \nThe number of subsets $$Q$$ of $$X$$ such that $$P \\Delta Q = \\{3\\}$$ is:",
+      "question": "Please assume $$\\Delta$$ to represent the symmetric difference between sets, for the entire test, unless stated otherwise. \nLet $$X = \\{1,2,3,\\dots,10\\}$$ and $$P = \\{1,2,3,4,5\\}$$. \nThe number of subsets $$Q$$ of $$X$$ such that $$P \\Delta Q = \\{3\\}$$ is:",
       "options": ["$$2^4 - 1$$", "$$2^4$$", "$$2^5$$", "$$1$$"],
       "answer": 2
     },
