@@ -90,16 +90,16 @@
       "answer": 0
     },
     {
-      "id": "q40",
-      "question": "Define $$(x,y) \\leftarrow (z,w)$$ if $$x<z$$ or ($$x=z$$ and $$y>w$$). \n If $$(x,y) \\leftarrow (z,w)$$ and $$(z,w)$$ $$\\leftarrow$$ $$(r,s)$$, which is always true?",
-      "options": [
-        "$$(x,y) \\leftarrow (r,s)$$",
-        "$$(y,x) \\leftarrow (s,r)$$",
-        "$$(x,y) \\leftarrow (s,r)$$",
-        "$$(r,s) \\leftarrow (x,y)$$"
-      ],
-      "answer": 3
-    },
+  "id": "q40",
+  "question": "Define $$(x,y) \\leftarrow (z,w)$$ if $$x < z$$ or ($$x = z$$ and $$y > w$$). If $$(x,y) \\leftarrow (z,w)$$ and $$(z,w) \\leftarrow (r,s)$$, which is always true?",
+  "options": [
+    "$$(x,y) \\leftarrow (r,s)$$",
+    "$$(y,x) \\leftarrow (s,r)$$",
+    "$$(x,y) \\leftarrow (s,r)$$",
+    "$$(r,s) \\leftarrow (x,y)$$"
+  ],
+  "answer": 3
+},
     {
       "id": "q41",
       "question": "Let $$S = \\{m/2^n : m,n \\in \\mathbb{Z}\\}$$ and \n$$T = \\{p/q : p,q \\in \\mathbb{Z},\\ q\\ \\text{odd}\\}$$. \nWhich is true?",
@@ -135,11 +135,16 @@
       "answer": 3
     },
     {
-      "id": "q44",
-      "question": "Let $$x_i = -x_{n-i+1}$$. \nConsider $$S = \\sum_{i<j<k} x_i x_j x_k$$. Then $$S$$ equals:",
-      "options": ["$$n! x_1 \\dots x_n$$", "$$(n-3)(n-4)$$", "$$(n-3)(n-4)(n-5)$$", "none"],
-      "answer": 3
-    },
+  "id": "q44",
+  "question": "Let $$x_i = -x_{n-i+1}$$. Consider\n$$S = \\sum_{i<j<k} x_i x_j x_k$$\nThen $$S$$ equals:",
+  "options": [
+    "$$n! x_1 \\ldots x_n$$",
+    "$$(n-3)(n-4)$$",
+    "$$(n-3)(n-4)(n-5)$$",
+    "none"
+  ],
+  "answer": 3
+},
     {
       "id": "q45",
       "question": "Let $$x = \\sup A$$, $$y = \\sup B$$, and $$C = A+B$$. If $$z = \\sup C$$, then:",
@@ -236,15 +241,15 @@
       "answer": 1
     },
     {
-      "id": "q60",
-      "question": "Positive $$x,y,z,w$$ satisfy: \n(i) $$x>y \\Rightarrow z>w$$; \n(ii) $$x>z \\Rightarrow y<w$$. \nWhich statement is valid?",
-      "options": [
-        "$$x<y \\Rightarrow z<w$$",
-        "$$x<z \\Rightarrow y>w$$",
-        "$$x>y+z \\Rightarrow z<y$$",
-        "$$x>y+z \\Rightarrow z>y$$"
-      ],
-      "answer": 3
-    }
+  "id": "q60",
+  "question": "Positive $x,y,z,w$ satisfy: \n(i) $x>y \\rightarrow z>w$; \n(ii) $x>z \\rightarrow y<w$. \nWhich statement is valid?",
+  "options": [
+    "$$x<y \\rightarrow z<w$$",
+    "$x<z \\rightarrow y>w$",
+    "$x>y+z \\rightarrow z<y$",
+    "$$x>y+z \\rightarrow z>y$$"
+  ],
+  "answer": 3
+}
   ]
 }
