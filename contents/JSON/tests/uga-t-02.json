@@ -11,7 +11,7 @@
   "questions": [
     {
       "id": "q31",
-      "question": "Let $$X = \\{1,2,3,\\dots,10\\}$$ and $$P = \\{1,2,3,4,5\\}$$. \nThe number of subsets $$Q$$ of $$X$$ such that $$P \\Delta Q = \\{3\\}$$ is:",
+      "question": "Please assume $$\\Delta$$ to represebt the symmetric difference between sets, for the entire test, unless stated otherwise. \nLet $$X = \\{1,2,3,\\dots,10\\}$$ and $$P = \\{1,2,3,4,5\\}$$. \nThe number of subsets $$Q$$ of $$X$$ such that $$P \\Delta Q = \\{3\\}$$ is:",
       "options": ["$$2^4 - 1$$", "$$2^4$$", "$$2^5$$", "$$1$$"],
       "answer": 2
     },
@@ -58,13 +58,13 @@
     {
       "id": "q37",
       "question": "If $$L_1 = \\{\\alpha^n : n \\ge 0\\}$$ and $$L_2 = \\{\\beta^n : n \\ge 0\\}$$, then $$L_1 L_2$$ equals:",
-      "image": "/images/q37.jpg",
       "options": [
         "$$L_1 \\cup L_2$$",
         "all words",
         "$$\\{\\alpha^m \\beta^n : m,n \\ge 0\\}$$",
         "$$\\{\\alpha^n \\beta^n : n \\ge 0\\}$$"
       ],
+      "image": "JSON/tests/images/q37.jpg",
       "answer": 2
     },
     {
