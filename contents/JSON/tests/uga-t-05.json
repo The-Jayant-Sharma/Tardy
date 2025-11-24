@@ -1,0 +1,193 @@
+{
+  "id": "t-test-05",
+  "title": "T-test-05",
+  "duration": 7200,
+  "total_questions": 30,
+  "marks": {
+    "full": 4,
+    "negative": 0,
+    "null": 1
+  },
+  "questions": [
+    {
+      "id": "q121",
+      "question": "For each positive integer $$n$$ consider the set $$S_n$$ defined as follows: $$S_1 = \\{1\\}$$, $$S_2 = \\{2, 3\\}$$, $$S_3 = \\{4, 5, 6\\}$$, and, in general, $$S_{n+1}$$ consists of $$n+1$$ consecutive integers the smallest of which is one more than the largest integer in $$S_n$$. Then the sum of all the integers in $$S_{21}$$ equals",
+      "options": ["$$1113$$", "$$53361$$", "$$5082$$", "$$4641$$"],
+      "answer": 2
+    },
+    {
+      "id": "q122",
+      "question": "If the constant term in the expansion of $$(\\sqrt{x} - \\frac{k}{x^2})^{10}$$ is $$405$$, then $$k$$ is",
+      "options": ["$$\\pm (3)^{\\frac{1}{3}}$$", "$$\\pm 2$$", "$$\\pm (4)^{\\frac{1}{3}}$$", "$$\\pm 3$$"],
+      "answer": 3
+    },
+    {
+      "id": "q123",
+      "question": "Consider the equation of the form $$x^2 + bx + c = 0$$. The number of such equations that have real roots and have coefficients $$b$$ and $$c$$ in the set $$\\left\\{1, 2, 3, 4, 5, 6\\right\\}$$ ($$b$$ may be equal to $$c$$), is",
+      "options": ["$$20$$", "$$18$$", "$$17$$", "$$19$$"],
+      "answer": 3
+    },
+    {
+      "id": "q124",
+      "question": "The number of polynomials of the form $$x^3 + ax^2 + bx + c$$ which are divisible by $$x^2 + 1$$ and where $$a, b$$ and $$c$$ belong to $$\\left\\{1, 2, ..., 10\\right\\}$$, is",
+      "options": ["$$1$$", "$$10$$", "$$11$$", "$$100$$"],
+      "answer": 0
+    },
+    {
+      "id": "q125",
+      "question": "The number of distinct 6-digit numbers between $$1$$ and $$300000$$ which are divisible by $$4$$ and are obtained by rearranging the digits of $$112233$$ is",
+      "options": ["$$12$$", "$$15$$", "$$18$$", "$$90$$"],
+      "answer": 1
+    },
+    {
+      "id": "q126",
+      "question": "The number of odd positive integers smaller than or equal to $$10,000$$ which are divisible neither by $$3$$ nor by $$5$$ is",
+      "options": ["$$3,332$$", "$$2,666$$", "$$2,999$$", "$$3,665$$"],
+      "answer": 1
+    },
+    {
+      "id": "q127",
+      "question": "The number of ways one can put three balls numbered $$1, 2, 3$$ in three boxes labelled $$a, b, c$$ such that at the most one box is empty is equal to",
+      "options": ["$$6$$", "$$24$$", "$$42$$", "$$18$$"],
+      "answer": 1
+    },
+    {
+      "id": "q128",
+      "question": "A bag contains coloured balls of which at least $$90\\%$$ are red. Balls are drawn from the bag one by one and their colour noted. It is found that $$49$$ of the first $$50$$ balls drawn are red. Thereafter $$7$$ out of every $$8$$ balls drawn are red. The number of balls in the bag CAN NOT BE",
+      "options": ["$$170$$", "$$210$$", "$$250$$", "$$194$$"],
+      "answer": 2
+    },
+    {
+      "id": "q129",
+      "question": "There are $$N$$ boxes, each containing at most $$r$$ balls. If the number of boxes containing at least $$i$$ balls is $$N_i$$, for $$i = 1, 2, ..., r$$, then the total number of balls contained in these $$N$$ boxes is",
+      "options": ["$$\\sum_{i=1}^{r} i N_i$$", "$$\\sum_{i=1}^{r} N_i$$", "$$\\sum_{i=1}^{r} N_{r+1-i}$$", "$$\\sum_{i=1}^{r} (N_i - N_{i+1})$$"],
+      "answer": 1
+    },
+    {
+      "id": "q130",
+      "question": "For all $$n$$, the value of $$\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}$$ is equal to",
+      "options": ["$$\\begin{pmatrix} 2n \\\\ 0 \\end{pmatrix} - \\begin{pmatrix} 2n \\\\ 2 \\end{pmatrix} + \\begin{pmatrix} 2n \\\\ 4 \\end{pmatrix} - ... + \\begin{pmatrix} 2n \\\\ 2n \\end{pmatrix}$$", "$$\\begin{pmatrix} 2n \\\\ 0 \\end{pmatrix}^2 - \\begin{pmatrix} 2n \\\\ 1 \\end{pmatrix}^2 + \\begin{pmatrix} 2n \\\\ 2 \\end{pmatrix}^2 - ... + \\begin{pmatrix} 2n \\\\ 2n \\end{pmatrix}^2$$", "$$\\begin{pmatrix} 2n \\\\ 0 \\end{pmatrix}^2 - \\begin{pmatrix} 2n \\\\ 1 \\end{pmatrix}^2 + \\begin{pmatrix} 2n \\\\ 2 \\end{pmatrix}^2 - ... + \\begin{pmatrix} 2n \\\\ 2n \\end{pmatrix}^2$$", "$$(D) none of the foregoing expressions$$."],
+      "answer": 2
+    },
+    {
+      "id": "q131",
+      "question": "The coefficients of three consecutive terms in the expansion of $$(1 + x)^n$$ are $$165, 330$$ and $$462$$. Then the value of $$n$$ is",
+      "options": ["$$10$$", "$$12$$", "$$13$$", "$$11$$"],
+      "answer": 3
+    },
+    {
+      "id": "q132",
+      "question": "The number of ways in which $$4$$ persons can be divided into two equal groups is",
+      "options": ["$$3$$", "$$12$$", "$$6$$", "$$(D) none of the foregoing numbers$$."],
+      "answer": 2
+    },
+    {
+      "id": "q133",
+      "question": "The number of ways in which $$8$$ persons numbered $$1, 2, ..., 8$$ can be seated in a ring so that $$1$$ always sits between $$2$$ and $$3$$ is",
+      "options": ["$$240$$", "$$360$$", "$$72$$", "$$120$$"],
+      "answer": 3
+    },
+    {
+      "id": "q134",
+      "question": "There are seven greeting cards, each of a different colour, and seven envelopes of the same seven colours. The number of ways in which the cards can be put in the envelopes, so that exactly four of the cards go into the envelopes of the right colours, is",
+      "options": ["$$\\begin{pmatrix} 7 \\\\ 4 \\end{pmatrix} (3!) - 4!$$", "$$2 \\begin{pmatrix} 7 \\\\ 4 \\end{pmatrix}$$", "$$3! \\begin{pmatrix} 7 \\\\ 4 \\end{pmatrix}$$", "$$3! (4!)$$"],
+      "answer": 1
+    },
+    {
+      "id": "q135",
+      "question": "The number of distinct positive integers that can be formed using $$0, 1, 2, 4$$ where each integer is used at the most once is equal to",
+      "options": ["$$48$$", "$$84$$", "$$64$$", "$$36$$"],
+      "answer": 0
+    },
+    {
+      "id": "q136",
+      "question": "A class contains three girls and four boys. Every Saturday five students go on a picnic, a different group being sent each week. During the picnic, each girl in the group is given a doll by the accompanying teacher. After all possible groups of five have gone once, the total number of dolls the girls have got is",
+      "options": ["$$27$$", "$$11$$", "$$21$$", "$$17$$"],
+      "answer": 2
+    },
+    {
+      "id": "q137",
+      "question": "From a group of seven persons, seven committees are formed. Any two committees have exactly one member in common. Each person is in exactly three committees. Then",
+      "options": ["At least one committee must have more than three members;", "Each committee must have exactly three members;", "Each committee must have more than three members;", "$$(D) nothing can be said about the sizes of the committees$$."],
+      "answer": 1
+    },
+    {
+      "id": "q138",
+      "question": "Three ladies have each brought a child for admission to a school. The head of the school wishes to interview the six people one by one, taking care that no child is interviewed before its mother. In how many different ways can the interviews be arranged?",
+      "options": ["$$6$$", "$$36$$", "$$72$$", "$$90$$"],
+      "answer": 3
+    },
+    {
+      "id": "q139",
+      "question": "The coefficient of $$x^4$$ in the expansion of $$(1 + x - 2x^2)^7$$ is",
+      "options": ["$$-81$$", "$$-91$$", "$$91$$", "$$-91$$"],
+      "answer": 1
+    },
+    {
+      "id": "q140",
+      "question": "The coefficient of $$a^2b^2c^2$$ in the expansion of $$(bc + ca + ab)^6$$ is",
+      "options": ["$$\\frac{12!}{3!4!5!}$$", "$$\\begin{pmatrix} 6 \\\\ 3 \\end{pmatrix}$$", "$$33$$", "$$90$$"],
+      "answer": 3
+    },
+    {
+      "id": "q141",
+      "question": "The coefficient of $$t^3$$ in the expansion of $$\\frac{(1-t^6)^3}{1-t}$$ is",
+      "options": ["$$10$$", "$$12$$", "$$18$$", "$$0$$"],
+      "answer": 0
+    },
+    {
+      "id": "q142",
+      "question": "The value of $$\\begin{pmatrix} 2n \\\\ 0 \\end{pmatrix}^2 - \\begin{pmatrix} 2n \\\\ 1 \\end{pmatrix}^2 + \\begin{pmatrix} 2n \\\\ 2 \\end{pmatrix}^2 - ... - \\begin{pmatrix} 2n \\\\ 2n-1 \\end{pmatrix}^2 + \\begin{pmatrix} 2n \\\\ 2n \\end{pmatrix}^2$$ is",
+      "options": ["$$\\begin{pmatrix} 4n \\\\ 2n \\end{pmatrix}$$", "$$\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}$$", "$$0$$", "$$(-1)^n \\begin{pmatrix} 2n \\\\ n \\end{pmatrix}$$"],
+      "answer": 3
+    },
+    {
+      "id": "q143",
+      "question": "There are $$14$$ intermediate stations between Dusi and Visakhapatnam on the South Eastern Railway. A train is to be arranged from Dusi to Visakhapatnam so that it halts at exactly three intermediate stations, no two of which are consecutive. Then the number of ways of doing this is",
+      "options": ["$$455$$", "$$364$$", "$$455$$", "$$3003$$"],
+      "answer": 0
+    },
+    {
+      "id": "q144",
+      "question": "The letters of the word 'MOTHER' are permuted, and all the permutations so formed are arranged in alphabetical order as in a dictionary. Then the number of permutations which come before the word 'MOTHER' is",
+      "options": ["$$503$$", "$$93$$", "$$92$$", "$$308$$"],
+      "answer": 3
+    },
+    {
+      "id": "q145",
+      "question": "All the letters of the word 'PESSIMISTIC' are to be arranged so that no two $$S$$'s occur together, no two $$I$$'s occur together, and $$S, I$$ do not occur together. The number of such arrangements is",
+      "options": ["$$2,400$$", "$$5,480$$", "$$48,000$$", "$$50,400$$"],
+      "answer": 0
+    },
+    {
+      "id": "q146",
+      "question": "Suppose that $$x$$ is an irrational number and $$a, b, c, d$$ are rational numbers such that $$\\frac{ax+b}{cx+d}$$ is rational. Then it follows that",
+      "options": ["$$a = c = 0$$", "$$a = c$$ and $$b = d$$", "$$a + b = c + d$$", "$$ad = bc$$"],
+      "answer": 3
+    },
+    {
+      "id": "q147",
+      "question": "Let $$p, q$$ and $$s$$ be integers such that $$p^2 = sq^2$$. Then it follows that",
+      "options": ["$$p$$ is an even number", "if $$s$$ divides $$p$$, then $$s$$ is a perfect square", "$$q$$ divides $$p$$", "$$q^2$$ divides $$p$$"],
+      "answer": 1
+    },
+    {
+      "id": "q148",
+      "question": "The number of pairs of positive integers $$(x, y)$$ where $$x$$ and $$y$$ are prime numbers and $$x^2 - 2y^2 = 1$$ is",
+      "options": ["$$0$$", "$$1$$", "$$2$$", "$$8$$"],
+      "answer": 1
+    },
+    {
+      "id": "q149",
+      "question": "A point $$P$$ with coordinates $$(x, y)$$ is said to be good if both $$x$$ and $$y$$ are positive integers. The number of good points on the curve $$xy = 27027$$ is",
+      "options": ["$$8$$", "$$16$$", "$$32$$", "$$64$$"],
+      "answer": 2
+    },
+    {
+      "id": "q150",
+      "question": "Let $$p$$ be an odd prime number. Then the number of positive integers $$k$$ with $$1 < k < p$$, for which $$k^2$$ leaves a remainder of $$1$$ when divided by $$p$$, is",
+      "options": ["$$2$$", "$$1$$", "$$p-1$$", "$$\\frac{p-1}{2}$$"],
+      "answer": 1
+    }
+  ]
+}
