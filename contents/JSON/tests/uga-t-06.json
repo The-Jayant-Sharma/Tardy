@@ -1,0 +1,193 @@
+{
+  "id": "t-test-06",
+  "title": "T-test-06",
+  "duration": 7200,
+  "total_questions": 30,
+  "marks": {
+    "full": 4,
+    "negative": 0,
+    "null": 1
+  },
+  "questions": [
+    {
+      "id": "q151",
+      "question": "Let $$n = 51! + 1$$. Then the number of primes among $$n+1, n+2, ..., n+50$$ is",
+      "options": ["$$0$$", "$$1$$", "$$2$$", "$$(D) more than 2$$."],
+      "answer": 2
+    },
+    {
+      "id": "q152",
+      "question": "The number of integers $$n$$ between $$1$$ and $$1000$$ which are not divisible by $$2, 3$$ or $$5$$ is",
+      "options": ["$$267$$", "$$266$$", "$$250$$", "$$333$$"],
+      "answer": 2
+    },
+    {
+      "id": "q153",
+      "question": "Let $$n$$ be a positive integer such that $$\\text{gcd}(n, 42) = 1$$. Then the remainder when $$n^6 - 1$$ is divided by $$168$$ is",
+      "options": ["$$0$$", "$$1$$", "$$42$$", "$$167$$"],
+      "answer": 2
+    },
+    {
+      "id": "q154",
+      "question": "The number of positive integral solutions of $$x_1 x_2 x_3 x_4 = 100$$ is",
+      "options": ["$$100$$", "$$125$$", "$$210$$", "$$225$$"],
+      "answer": 0
+    },
+    {
+      "id": "q155",
+      "question": "The number of ways in which $$12$$ identical coins can be distributed in $$6$$ distinct bags so that no bag contains less than one coin and more than three coins is",
+      "options": ["$$10$$", "$$12$$", "$$14$$", "$$16$$"],
+      "answer": 1
+    },
+    {
+      "id": "q156",
+      "question": "If $$x$$ is the number of integers in $$\\left\\{1, 2, ..., 200\\right\\}$$ divisible by $$2$$ or $$3$$ and $$y$$ is the number of integers divisible by $$4$$ or $$5$$, then $$x+y$$ is",
+      "options": ["$$240$$", "$$230$$", "$$220$$", "$$250$$"],
+      "answer": 2
+    },
+    {
+      "id": "q157",
+      "question": "The number of ways in which $$n$$ couples can be arranged in a row such that all the boys sit together is",
+      "options": ["$$(2n)!$$", "$$n! 2^n$$", "$$2 \\cdot n! 2^n$$", "$$2n \\cdot n!$$"],
+      "answer": 0
+    },
+    {
+      "id": "q158",
+      "question": "The number of words that can be formed by taking $$4$$ different consonants and $$3$$ different vowels from $$7$$ consonants and $$4$$ vowels is",
+      "options": ["$$35 \\cdot 4! \\cdot 7!$$", "$$35 \\cdot 4! \\cdot 7!$$", "$$7! \\cdot 35$$", "$$7! \\cdot 24$$"],
+      "answer": 0
+    },
+    {
+      "id": "q159",
+      "question": "The number of words that can be formed from the letters of the word 'ARTICLE' so that vowels and consonants alternate is",
+      "options": ["$$144$$", "$$144$$", "$$12$$", "$$576$$"],
+      "answer": 3
+    },
+    {
+      "id": "q160",
+      "question": "The number of ways in which $$5$$ boys and $$5$$ girls can be arranged in a row so that no two girls sit together is",
+      "options": ["$$5! \\times 6!$$", "$$5! \\times 5!$$", "$$5! \\times 4!$$", "$$10! - 2(5!) \\times 5!$$"],
+      "answer": 0
+    },
+    {
+      "id": "q161",
+      "question": "The number of ways in which $$4$$ boys and $$4$$ girls can be arranged around a round table so that no two boys are together is",
+      "options": ["$$(4!)^2$$", "$$4! \\times 4!$$", "$$3! \\times 4!$$", "$$7!$$"],
+      "answer": 2
+    },
+    {
+      "id": "q162",
+      "question": "The number of positive integral solutions of $$x_1 + x_2 + x_3 + x_4 = 17$$ is",
+      "options": ["$$\\begin{pmatrix} 16 \\\\ 3 \\end{pmatrix}$$", "$$\\begin{pmatrix} 20 \\\\ 3 \\end{pmatrix}$$", "$$\\begin{pmatrix} 16 \\\\ 4 \\end{pmatrix}$$", "$$\\begin{pmatrix} 20 \\\\ 4 \\end{pmatrix}$$"],
+      "answer": 2
+    },
+    {
+      "id": "q163",
+      "question": "The coefficient of $$x^n$$ in the expansion of $$(1 - 3x)^{-1/2}$$ is",
+      "options": ["$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot ... \\cdot (2n-1)}{2^n n!} 3^n$$", "$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot ... \\cdot (2n-1)}{2^{2n} n!} 3^n$$", "$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot ... \\cdot (2n-1)}{n!} 3^n$$", "$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot ... \\cdot (2n-1)}{2^{2n} (n!)^2} 3^n$$"],
+      "answer": 0
+    },
+    {
+      "id": "q164",
+      "question": "The coefficient of $$x^n$$ in the expansion of $$\\frac{1-x}{1-2x+x^2}$$ is",
+      "options": ["$$2^n$$", "$$2^{n+1}$$", "$$n+1$$", "$$1$$"],
+      "answer": 0
+    },
+    {
+      "id": "q165",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2$$ or $$3$$ is",
+      "options": ["$$66$$", "$$33$$", "$$67$$", "$$50$$"],
+      "answer": 2
+    },
+    {
+      "id": "q166",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2$$ but not by $$3$$ is",
+      "options": ["$$33$$", "$$34$$", "$$50$$", "$$67$$"],
+      "answer": 1
+    },
+    {
+      "id": "q167",
+      "question": "The number of positive integers $$\\le 100$$ which are divisible by $$2$$ and $$3$$ but not by $$5$$ is",
+      "options": ["$$10$$", "$$11$$", "$$12$$", "$$13$$"],
+      "answer": 3
+    },
+    {
+      "id": "q168",
+      "question": "The number of positive integers $$\\le 100$$ which are divisible by $$2$$ or $$3$$ or $$5$$ is",
+      "options": ["$$70$$", "$$72$$", "$$74$$", "$$76$$"],
+      "answer": 2
+    },
+    {
+      "id": "q169",
+      "question": "The coefficient of $$x^2$$ in the expansion of $$(1 + x + x^2)^5$$ is",
+      "options": ["$$10$$", "$$15$$", "$$20$$", "$$30$$"],
+      "answer": 0
+    },
+    {
+      "id": "q170",
+      "question": "The sum of the digits of the number $$(10^n - 1) / 9$$ is",
+      "options": ["$$9n$$", "$$n$$", "$$n^2$$", "$$10n$$"],
+      "answer": 1
+    },
+    {
+      "id": "q171",
+      "question": "The number of ways in which $$\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}$$ items can be divided into $$\\begin{pmatrix} 2n \\\\ n \\end{pmatrix} - 1$$ groups, each of size $$1$$, is",
+      "options": ["$$\\frac{\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}!}{\\begin{pmatrix} 2n \\\\ n \\end{pmatrix} - 1}$$", "$$\\frac{\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}!}{2!}$$", "$$\\frac{\\begin{pmatrix} 2n \\\\ n \\end{pmatrix}!}{1!}$$", "$$1$$"],
+      "answer": 3
+    },
+    {
+      "id": "q172",
+      "question": "The coefficient of $$x^n$$ in the expansion of $$\\frac{1}{(1-x)(1-x^2)}$$ is",
+      "options": ["$$\\frac{n^2 + 2n + 1}{2}$$", "$$\\frac{n^2 + 2n}{2}$$", "$$\\frac{n^2 + 2n + 2}{2}$$", "$$\\frac{n^2 + 2n}{2}$$"],
+      "answer": 2
+    },
+    {
+      "id": "q173",
+      "question": "The coefficient of $$x^4$$ in the expansion of $$\\frac{(1-3x+2x^2)^6}{x^2}$$ is",
+      "options": ["$$10$$", "$$30$$", "$$60$$", "$$90$$"],
+      "answer": 1
+    },
+    {
+      "id": "q174",
+      "question": "The coefficient of $$x^5$$ in the expansion of $$(1 + 2x - 3x^2)^4$$ is",
+      "options": ["$$24$$", "$$72$$", "$$24$$", "$$96$$"],
+      "answer": 3
+    },
+    {
+      "id": "q175",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2, 3$$ or $$5$$ is",
+      "options": ["$$70$$", "$$72$$", "$$74$$", "$$76$$"],
+      "answer": 3
+    },
+    {
+      "id": "q176",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2$$ or $$3$$ but not by $$5$$ is",
+      "options": ["$$52$$", "$$53$$", "$$54$$", "$$55$$"],
+      "answer": 0
+    },
+    {
+      "id": "q177",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2$$ and $$3$$ but not by $$5$$ is",
+      "options": ["$$10$$", "$$11$$", "$$12$$", "$$13$$"],
+      "answer": 2
+    },
+    {
+      "id": "q178",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are divisible by $$2$$ and $$3$$ or $$5$$ is",
+      "options": ["$$70$$", "$$72$$", "$$74$$", "$$76$$"],
+      "answer": 3
+    },
+    {
+      "id": "q179",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are not divisible by $$2$$ or $$3$$ or $$5$$ is",
+      "options": ["$$26$$", "$$27$$", "$$28$$", "$$30$$"],
+      "answer": 0
+    },
+    {
+      "id": "q180",
+      "question": "The number of integers $$\\ge 1$$ and $$\\le 100$$ which are not divisible by $$2$$ and $$3$$ and $$5$$ is",
+      "options": ["$$26$$", "$$27$$", "$$28$$", "$$30$$"],
+      "answer": 1
+    }
+  ]
+}
