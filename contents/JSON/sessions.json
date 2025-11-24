@@ -2,8 +2,8 @@
   "sessions": [
     {
       "id": "uga-t-01",
-      "title": "UGA T-Test 1",
-      "description": "This test encapsulates the first thirty questions of the book offering questions of general mathematical logic of profit and loss and basic understanding of sets. The test lasts for two hours and offers thirty questions. There is no negative marking, and for each wrong attempt zero marks will be assumed, whereas for unattempted and correct answers, ome and four marks will be assumed respectively.",
+      "title": "UGA T-Test 1 (Q1-30)",
+      "description": "This test encapsulates the first thirty questions of the book offering questions of general mathematical logic of profit and loss and basic understanding of sets. The test lasts for two hours and offers thirty questions. There is no negative marking, and for each wrong attempt zero marks will be assumed, whereas for unattempted and correct answers, one and four marks will be assumed respectively.",
       "time": "2 Hours",
       "total_questions": 30,
       "start-date": "17-11-2025",
@@ -24,7 +24,7 @@
     },
     {
       "id": "uga-t-02",
-      "title": "UGA T-Test 2",
+      "title": "UGA T-Test 2 (Q31-60)",
       "description": "This test evaluates your understanding of fundamental concepts in mathematical logic, including set theory operations, logical equivalences, functions, and related problem-solving skills. The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
       "time": "2 Hours",
       "total_questions": 30,
@@ -32,6 +32,50 @@
       "end-date": "23-11-2025",
       "start": "November 20, 2025",
       "end": "November 23, 2025"
+    },
+    {
+      "id": "uga-t-03",
+      "title": "UGA T-Test 3 (Q61-90)",
+      "description": "This test covers Discrete Mathematics, including Set Theory, Combinatorics, and Recurrence Relations. The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
+      "time": "2 Hours",
+      "total_questions": 30,
+      "start-date": "24-11-2025",
+      "end-date": "26-11-2025",
+      "start": "November 24, 2025",
+      "end": "November 26, 2025"
+    },
+    {
+      "id": "uga-t-04",
+      "title": "UGA T-Test 4 (Q91-120)",
+      "description": "This test focuses on Number Theory and Advanced Combinatorics, covering divisibility, factor counting, and binomial theorems. The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
+      "time": "2 Hours",
+      "total_questions": 30,
+      "start-date": "27-11-2025",
+      "end-date": "29-11-2025",
+      "start": "November 27, 2025",
+      "end": "November 29, 2025"
+    },
+    {
+      "id": "uga-t-05",
+      "title": "UGA T-Test 5 (Q121-150)",
+      "description": "This test covers topics in Sequences, Series, and advanced counting techniques (Pigeonhole Principle, Derangements). The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
+      "time": "2 Hours",
+      "total_questions": 30,
+      "start-date": "30-11-2025",
+      "end-date": "02-12-2025",
+      "start": "November 30, 2025",
+      "end": "December 02, 2025"
+    },
+    {
+      "id": "uga-t-06",
+      "title": "UGA T-Test 6 (Q151-180)",
+      "description": "This test focuses on Number Theory (primes, divisibility), Inclusion-Exclusion Principle, and Combinatorics (arrangements, selections). The marking scheme is preserved, +1 for unattempted, 0 for incorrect, and +4 for correct.",
+      "time": "2 Hours",
+      "total_questions": 30,
+      "start-date": "03-12-2025",
+      "end-date": "05-12-2025",
+      "start": "December 03, 2025",
+      "end": "December 05, 2025"
     }
   ]
 }
