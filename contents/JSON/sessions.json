@@ -7,9 +7,9 @@
       "time": "2 Hours",
       "total_questions": 30,
       "start-date": "17-11-2025",
-      "end-date": "19-11-2025",
+      "end-date": "17-11-2026",
       "start": "November 17, 2025",
-      "end": "November 19, 2025"
+      "end": "November 17, 2026"
     },
     {
       "id": "uga-s-01",
@@ -40,9 +40,9 @@
       "time": "2 Hours",
       "total_questions": 30,
       "start-date": "24-11-2025",
-      "end-date": "26-11-2025",
+      "end-date": "24-11-2026",
       "start": "November 24, 2025",
-      "end": "November 26, 2025"
+      "end": "November 24, 2026"
     },
     {
       "id": "uga-t-04",
@@ -51,9 +51,9 @@
       "time": "2 Hours",
       "total_questions": 30,
       "start-date": "27-11-2025",
-      "end-date": "29-11-2025",
+      "end-date": "27-11-2026",
       "start": "November 27, 2025",
-      "end": "November 29, 2025"
+      "end": "November 27, 2026"
     },
     {
       "id": "uga-t-05",
@@ -62,9 +62,9 @@
       "time": "2 Hours",
       "total_questions": 30,
       "start-date": "30-11-2025",
-      "end-date": "02-12-2025",
+      "end-date": "30-12-2026",
       "start": "November 30, 2025",
-      "end": "December 02, 2025"
+      "end": "November 30, 2026"
     },
     {
       "id": "uga-t-06",
@@ -75,7 +75,7 @@
       "start-date": "03-12-2025",
       "end-date": "05-12-2025",
       "start": "December 03, 2025",
-      "end": "December 05, 2025"
+      "end": "December 03, 2026"
     }
   ]
 }
