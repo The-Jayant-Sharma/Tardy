@@ -408,7 +408,7 @@ async function onSelectExam(examId){
 
   } catch(e){
     console.error(e);
-    selectedPanel.innerHTML = `<div class="panel"><div class="empty">Failed to load attempts for ${examId}.</div></div>`;
+    selectedPanel.innerHTML = `<div class="panel"><div class="empty">No attempts found for ${examId}.</div></div>`;
   }
 }
 
